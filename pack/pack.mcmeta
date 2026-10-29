@@ -1,0 +1,10 @@
+{
+  "pack": {
+    "description": [
+      {"text": "lairner ", "color": "#FF8A3C"},
+      {"text": "Defusal pack", "color": "#E6E8EE"}
+    ],
+    "min_format": 97,
+    "max_format": 97
+  }
+}

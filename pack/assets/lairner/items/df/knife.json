@@ -1,0 +1,7 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "lairner:item/df/knife"
+  },
+  "hand_animation_on_swap": false
+}

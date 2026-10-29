@@ -1,0 +1,97 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/crosshair.png",
+      "height": 6,
+      "ascent": 0,
+      "chars": [
+        "\ue000"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/hitmarker.png",
+      "height": 8,
+      "ascent": 1,
+      "chars": [
+        "\ue001"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/headshot.png",
+      "height": 8,
+      "ascent": 1,
+      "chars": [
+        "\ue002"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/flash.png",
+      "height": 1024,
+      "ascent": 509,
+      "chars": [
+        "\ue003"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/icon_bomb.png",
+      "height": 8,
+      "ascent": 7,
+      "chars": [
+        "\ue010"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/icon_kit.png",
+      "height": 8,
+      "ascent": 7,
+      "chars": [
+        "\ue011"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/icon_armor.png",
+      "height": 8,
+      "ascent": 7,
+      "chars": [
+        "\ue012"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/icon_helmet.png",
+      "height": 8,
+      "ascent": 7,
+      "chars": [
+        "\ue013"
+      ]
+    },
+    {
+      "type": "space",
+      "advances": {
+        "\uf801": -1,
+        "\uf811": 1,
+        "\uf802": -2,
+        "\uf812": 2,
+        "\uf803": -4,
+        "\uf813": 4,
+        "\uf804": -8,
+        "\uf814": 8,
+        "\uf805": -16,
+        "\uf815": 16,
+        "\uf806": -32,
+        "\uf816": 32,
+        "\uf807": -64,
+        "\uf817": 64,
+        "\uf808": -128,
+        "\uf818": 128
+      }
+    }
+  ]
+}

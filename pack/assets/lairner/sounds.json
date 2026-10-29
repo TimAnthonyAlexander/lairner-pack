@@ -1,0 +1,287 @@
+{
+  "df.ak.shot": {
+    "sounds": [
+      {
+        "name": "lairner:df/ak/shot_1",
+        "attenuation_distance": 72
+      },
+      {
+        "name": "lairner:df/ak/shot_2",
+        "attenuation_distance": 72
+      },
+      {
+        "name": "lairner:df/ak/shot_3",
+        "attenuation_distance": 72
+      }
+    ],
+    "subtitle": "Gunshot"
+  },
+  "df.bomb.beep": {
+    "sounds": [
+      {
+        "name": "lairner:df/bomb/beep",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "Bomb beeps"
+  },
+  "df.bomb.defuse": {
+    "sounds": [
+      {
+        "name": "lairner:df/bomb/defuse",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Defusing"
+  },
+  "df.bomb.defused": {
+    "sounds": [
+      {
+        "name": "lairner:df/bomb/defused",
+        "attenuation_distance": 32
+      }
+    ],
+    "subtitle": "Bomb defused"
+  },
+  "df.bomb.explode": {
+    "sounds": [
+      {
+        "name": "lairner:df/bomb/explode",
+        "attenuation_distance": 160
+      }
+    ],
+    "subtitle": "Bomb explodes"
+  },
+  "df.bomb.key": {
+    "sounds": [
+      {
+        "name": "lairner:df/bomb/key",
+        "attenuation_distance": 12
+      }
+    ]
+  },
+  "df.bomb.plant": {
+    "sounds": [
+      {
+        "name": "lairner:df/bomb/plant",
+        "attenuation_distance": 32
+      }
+    ],
+    "subtitle": "Bomb planted"
+  },
+  "df.deagle.shot": {
+    "sounds": [
+      {
+        "name": "lairner:df/deagle/shot_1",
+        "attenuation_distance": 72
+      },
+      {
+        "name": "lairner:df/deagle/shot_2",
+        "attenuation_distance": 72
+      }
+    ],
+    "subtitle": "Gunshot"
+  },
+  "df.dryfire": {
+    "sounds": [
+      {
+        "name": "lairner:df/dryfire",
+        "attenuation_distance": 10
+      }
+    ]
+  },
+  "df.flash.explode": {
+    "sounds": [
+      {
+        "name": "lairner:df/flash/explode",
+        "attenuation_distance": 64
+      }
+    ],
+    "subtitle": "Flashbang pops"
+  },
+  "df.flash.ring": {
+    "sounds": [
+      {
+        "name": "lairner:df/flash/ring",
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "df.glock.shot": {
+    "sounds": [
+      {
+        "name": "lairner:df/glock/shot_1",
+        "attenuation_distance": 56
+      },
+      {
+        "name": "lairner:df/glock/shot_2",
+        "attenuation_distance": 56
+      },
+      {
+        "name": "lairner:df/glock/shot_3",
+        "attenuation_distance": 56
+      }
+    ],
+    "subtitle": "Gunshot"
+  },
+  "df.grenade.bounce": {
+    "sounds": [
+      {
+        "name": "lairner:df/grenade/bounce_1",
+        "attenuation_distance": 20
+      },
+      {
+        "name": "lairner:df/grenade/bounce_2",
+        "attenuation_distance": 20
+      },
+      {
+        "name": "lairner:df/grenade/bounce_3",
+        "attenuation_distance": 20
+      }
+    ],
+    "subtitle": "Grenade bounces"
+  },
+  "df.he.explode": {
+    "sounds": [
+      {
+        "name": "lairner:df/he/explode",
+        "attenuation_distance": 96
+      }
+    ],
+    "subtitle": "Grenade explodes"
+  },
+  "df.headshot": {
+    "sounds": [
+      {
+        "name": "lairner:df/headshot",
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "df.hit": {
+    "sounds": [
+      {
+        "name": "lairner:df/hit",
+        "attenuation_distance": 8
+      }
+    ]
+  },
+  "df.knife.hit": {
+    "sounds": [
+      {
+        "name": "lairner:df/knife/hit",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Knife hits"
+  },
+  "df.knife.swing": {
+    "sounds": [
+      {
+        "name": "lairner:df/knife/swing_1",
+        "attenuation_distance": 12
+      },
+      {
+        "name": "lairner:df/knife/swing_2",
+        "attenuation_distance": 12
+      }
+    ],
+    "subtitle": "Knife swings"
+  },
+  "df.m4s.shot": {
+    "sounds": [
+      {
+        "name": "lairner:df/m4s/shot_1",
+        "attenuation_distance": 24
+      },
+      {
+        "name": "lairner:df/m4s/shot_2",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "Silenced shot"
+  },
+  "df.mac10.shot": {
+    "sounds": [
+      {
+        "name": "lairner:df/mac10/shot_1",
+        "attenuation_distance": 56
+      },
+      {
+        "name": "lairner:df/mac10/shot_2",
+        "attenuation_distance": 56
+      },
+      {
+        "name": "lairner:df/mac10/shot_3",
+        "attenuation_distance": 56
+      }
+    ],
+    "subtitle": "Gunshot"
+  },
+  "df.mp9.shot": {
+    "sounds": [
+      {
+        "name": "lairner:df/mp9/shot_1",
+        "attenuation_distance": 56
+      },
+      {
+        "name": "lairner:df/mp9/shot_2",
+        "attenuation_distance": 56
+      },
+      {
+        "name": "lairner:df/mp9/shot_3",
+        "attenuation_distance": 56
+      }
+    ],
+    "subtitle": "Gunshot"
+  },
+  "df.reload.pistol": {
+    "sounds": [
+      {
+        "name": "lairner:df/reload/pistol",
+        "attenuation_distance": 12
+      }
+    ],
+    "subtitle": "Reloading"
+  },
+  "df.reload.rifle": {
+    "sounds": [
+      {
+        "name": "lairner:df/reload/rifle",
+        "attenuation_distance": 12
+      }
+    ],
+    "subtitle": "Reloading"
+  },
+  "df.reload.smg": {
+    "sounds": [
+      {
+        "name": "lairner:df/reload/smg",
+        "attenuation_distance": 12
+      }
+    ],
+    "subtitle": "Reloading"
+  },
+  "df.smoke.pop": {
+    "sounds": [
+      {
+        "name": "lairner:df/smoke/pop",
+        "attenuation_distance": 32
+      }
+    ],
+    "subtitle": "Smoke hisses"
+  },
+  "df.usp.shot": {
+    "sounds": [
+      {
+        "name": "lairner:df/usp/shot_1",
+        "attenuation_distance": 22
+      },
+      {
+        "name": "lairner:df/usp/shot_2",
+        "attenuation_distance": 22
+      }
+    ],
+    "subtitle": "Silenced shot"
+  }
+}
