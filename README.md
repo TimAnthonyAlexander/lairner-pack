@@ -52,6 +52,7 @@ transform chain; real in-game look may differ slightly).
 | `lairner:df.reload.pistol` (2.2 s), `df.reload.smg` (2.7 s), `df.reload.rifle` (2.5 s) | 12 |
 | `lairner:df.dryfire` | 10 |
 | `lairner:df.hit`, `df.headshot` (for the shooter) | 8 |
+| `lairner:df.headshot.kill` (headshot kill, world sound at the victim; mono) | 32 |
 | `lairner:df.knife.swing`, `df.knife.hit` | 12 / 16 |
 | `lairner:df.bomb.beep` | 24 |
 | `lairner:df.bomb.key` (one keypad press while planting), `df.bomb.plant` (armed) | 12 / 32 |

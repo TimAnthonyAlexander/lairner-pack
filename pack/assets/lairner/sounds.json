@@ -158,6 +158,15 @@
       }
     ]
   },
+  "df.headshot.kill": {
+    "sounds": [
+      {
+        "name": "lairner:df/headshot_kill",
+        "attenuation_distance": 32
+      }
+    ],
+    "subtitle": "Headshot kill"
+  },
   "df.hit": {
     "sounds": [
       {

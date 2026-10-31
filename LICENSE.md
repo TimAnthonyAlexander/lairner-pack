@@ -17,6 +17,11 @@
 CC0 needs no attribution; we credit them anyway. Thank you, Kenney and the
 Free Firearm Sound Library team.
 
+## Provided by Tim
+
+- `df.headshot.kill` (`pack/assets/lairner/sounds/df/headshot_kill.ogg`) comes from a sound provided by Tim
+  (`source/tim/headshot.m4a`), trimmed to 0.43-1.62 s and downmixed to mono by `tools/sounds.py`.
+
 ## Everything else
 
 Everything else in this repository (the knife, bomb and defuse kit models,
