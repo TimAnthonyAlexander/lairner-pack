@@ -94,7 +94,7 @@
     "sounds": [
       {
         "name": "lairner:df/flash/explode",
-        "attenuation_distance": 64
+        "attenuation_distance": 80
       }
     ],
     "subtitle": "Flashbang pops"
@@ -158,11 +158,20 @@
       }
     ]
   },
+  "df.headshot.hit": {
+    "sounds": [
+      {
+        "name": "lairner:df/headshot_hit",
+        "attenuation_distance": 80
+      }
+    ],
+    "subtitle": "Headshot"
+  },
   "df.headshot.kill": {
     "sounds": [
       {
         "name": "lairner:df/headshot_kill",
-        "attenuation_distance": 32
+        "attenuation_distance": 80
       }
     ],
     "subtitle": "Headshot kill"

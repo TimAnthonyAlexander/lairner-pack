@@ -224,6 +224,14 @@ OLIVE = (92, 110, 74)
 OLIVE_DARK = (70, 86, 58)
 
 
+def centered(spec):
+    """Shift a spec so its bounding box is centered on (8, 8, 8)."""
+    lo = [min(b[0][i] for b in spec) for i in range(3)]
+    hi = [max(b[1][i] for b in spec) for i in range(3)]
+    d = [8 - (lo[i] + hi[i]) / 2 for i in range(3)]
+    return [([a[i] + d[i] for i in range(3)], [b[i] + d[i] for i in range(3)], c) for a, b, c in spec]
+
+
 def boxes_model(spec, pal):
     """spec: [(from, to, rgb)] in model units."""
     els = []
@@ -252,6 +260,83 @@ def knife_spec():
     s.append(([7.75, 8.1, -3.0], [8.25, 8.6, -2.0], EDGE))
     s.append(([7.55, 8.6, 3.0], [8.45, 9.3, 8.0], STEEL_DARK))     # fuller / spine detail
     return s
+
+
+WOOD = (156, 98, 58)
+WOOD_DARK = (122, 74, 42)
+BLACK_STEEL = (52, 54, 64)
+
+
+def deagle_spec():
+    """Big semi-auto pistol along -Z (z 0 = muzzle): tall flat-sided slide over the full length, barrel flush with
+    the slide front, front and rear sight, hammer, trigger guard, grip angled back with the magazine flush in it."""
+    s = []
+    # slide: long, tall, flat sides; serrations at the rear; rib on top
+    s.append(([7.1, 8.2, 0], [8.9, 10.5, 13.0], STEEL))
+    s.append(([7.7, 10.5, 0.6], [8.3, 10.8, 12.4], STEEL_DARK))
+    for z in (10.4, 11.1, 11.8):
+        s.append(([7.05, 8.5, z], [8.95, 10.3, z + 0.35], STEEL_DARK))
+    # barrel: bore in the slide front, flush
+    s.append(([7.5, 8.7, -0.05], [8.5, 9.7, 0.05], GRIP_DARK))
+    # sights
+    s.append(([7.8, 10.8, 0.6], [8.2, 11.5, 1.4], GRIP_DARK))
+    s.append(([7.25, 10.5, 11.8], [7.8, 11.3, 12.8], GRIP_DARK))
+    s.append(([8.2, 10.5, 11.8], [8.75, 11.3, 12.8], GRIP_DARK))
+    # hammer
+    s.append(([7.75, 9.2, 13.0], [8.25, 10.3, 13.8], GRIP_DARK))
+    # frame under the slide, thick, to the backstrap
+    s.append(([7.3, 7.3, 1.5], [8.7, 8.2, 13.4], STEEL_DARK))
+    # trigger guard and trigger
+    s.append(([7.4, 6.2, 5.2], [8.6, 7.3, 5.9], STEEL_DARK))
+    s.append(([7.4, 6.2, 5.2], [8.6, 6.8, 9.0], STEEL_DARK))
+    s.append(([7.85, 6.8, 7.0], [8.15, 7.9, 7.5], GRIP_DARK))
+    # grip angled back, stepped; the magazine is the flush bottom plate
+    for i in range(4):
+        y1 = 7.3 - i * 1.3
+        zs = 9.0 + i * 0.5
+        s.append(([7.3, y1 - 1.3, zs], [8.7, y1, zs + 4.2], GRIP))
+    s.append(([7.3, 1.8, 10.5], [8.7, 2.1, 14.7], STEEL_DARK))
+    return centered(s)
+
+
+def ak_spec():
+    """AK along -Z (z 0 = muzzle): wooden fixed stock and lower handguard, black receiver with dust cover, gas tube
+    above a long thin barrel with a front sight post, pistol grip, forward-curved banana magazine."""
+    s = []
+    # muzzle device, thin barrel, front sight
+    s.append(([7.55, 8.55, 0], [8.45, 9.45, 1.0], GRIP_DARK))
+    s.append(([7.7, 8.7, 1.0], [8.3, 9.3, 9.5], STEEL_DARK))
+    s.append(([7.6, 9.3, 2.0], [8.4, 9.8, 3.0], GRIP_DARK))
+    s.append(([7.85, 9.8, 2.3], [8.15, 10.9, 2.7], GRIP_DARK))
+    # gas block, gas tube above the barrel, rear sight
+    s.append(([7.55, 8.6, 7.5], [8.45, 9.6, 8.7], GRIP_DARK))
+    s.append(([7.7, 9.3, 7.5], [8.3, 9.9, 13.6], STEEL_DARK))
+    s.append(([7.5, 9.9, 12.8], [7.9, 10.6, 14.0], GRIP_DARK))
+    s.append(([8.1, 9.9, 12.8], [8.5, 10.6, 14.0], GRIP_DARK))
+    # wooden lower handguard
+    s.append(([7.35, 7.5, 8.5], [8.65, 9.3, 14.0], WOOD))
+    s.append(([7.3, 7.6, 8.3], [8.7, 7.9, 14.0], WOOD_DARK))
+    # receiver and dust cover
+    s.append(([7.3, 7.2, 13.5], [8.7, 10.0, 22.0], BLACK_STEEL))
+    s.append(([7.4, 10.0, 14.2], [8.6, 10.7, 21.5], STEEL_DARK))
+    s.append(([7.8, 10.7, 15.0], [8.2, 10.95, 21.0], GRIP_DARK))
+    # banana magazine curving forward
+    for i, (y0, y1, z0) in enumerate(((5.8, 7.2, 14.8), (4.4, 5.8, 13.6), (3.0, 4.4, 12.0), (1.6, 3.0, 10.0))):
+        s.append(([7.45, y0, z0], [8.55, y1, z0 + 3.8], (104, 110, 126) if i % 2 == 0 else STEEL_DARK))
+    # trigger guard, trigger, pistol grip angled back
+    s.append(([7.5, 6.3, 18.5], [8.5, 7.2, 19.0], STEEL_DARK))
+    s.append(([7.5, 6.3, 18.5], [8.5, 6.8, 20.2], STEEL_DARK))
+    s.append(([7.85, 6.8, 19.3], [8.15, 7.6, 19.7], GRIP_DARK))
+    for i in range(3):
+        y1 = 7.2 - i * 1.6
+        z0 = 20.2 + i * 0.6
+        s.append(([7.4, y1 - 1.6, z0], [8.6, y1, z0 + 2.6], WOOD_DARK))
+    # wooden fixed stock with a rubber pad
+    s.append(([7.55, 7.6, 22.0], [8.45, 9.6, 24.5], WOOD))
+    s.append(([7.45, 7.0, 24.5], [8.55, 9.8, 26.5], WOOD))
+    s.append(([7.4, 5.8, 26.5], [8.6, 9.8, 27.6], WOOD_DARK))
+    s.append(([7.35, 5.7, 27.6], [8.65, 9.9, 28.2], GRIP_DARK))
+    return centered(s)
 
 
 def bomb_spec():
@@ -315,10 +400,8 @@ def build(pal):
 
     gun('glock', 'blaster-k', 13, 64, PISTOL_DISPLAY, turn=True)
     gun('usp', 'blaster-a', 16, 52, PISTOL_DISPLAY, silencer='silencer-small')
-    gun('deagle', 'blaster-j', 15, 60, PISTOL_DISPLAY, turn=True)
     gun('mac10', 'blaster-c', 15, 60, SMG_DISPLAY)
     gun('mp9', 'blaster-i', 16, 60, SMG_DISPLAY, turn=True)
-    gun('ak', 'blaster-n', 24, 56, RIFLE_DISPLAY)
     gun('m4s', 'blaster-d', 28, 48, RIFLE_DISPLAY, silencer='silencer-larger')
 
     nade_display = compact_display(fp_scale=0.55, fp_t=[0, 6.0, 0], tp_scale=0.5, tp_t=[0, 1.5, 1.0], gui_scale=1.05)
@@ -343,6 +426,10 @@ def build(pal):
     models['knife'] = {'elements': boxes_model(knife_spec(), pal),
                        'display': gun_display(fp_scale=0.75, fp_t=[-0.6, 1.6, -1.4], tp_scale=0.7,
                                               tp_t=[0, 0.8, 1.6], gui_scale=0.85), 'src': 'lairner'}
+    models['deagle'] = {'elements': boxes_model(deagle_spec(), pal), 'display': gun_display(**PISTOL_DISPLAY),
+                        'src': 'lairner'}
+    models['ak'] = {'elements': boxes_model(ak_spec(), pal), 'display': gun_display(**RIFLE_DISPLAY),
+                    'src': 'lairner'}
     models['bomb'] = {'elements': boxes_model(bomb_spec(), pal),
                       'display': compact_display(fp_scale=0.55, fp_t=[0, 5.0, -1.0], tp_scale=0.5,
                                                  tp_t=[0, 1.6, 1.2], gui_scale=0.95, ground_scale=0.4), 'src': 'lairner'}

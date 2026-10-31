@@ -144,7 +144,8 @@ def recipes(b):
         clip(imp + 'impactMetal_light_000.ogg', 0, 0.35, 'highpass=f=1200'),
         synth('sine=frequency=3200:duration=0.25', filt='afade=t=out:d=0.25', gain=4)], 0.35, -2.0)], 8)
 
-    ev['df.headshot.kill'] = ([tim_headshot_kill()], 32)
+    ev['df.headshot.kill'] = ([tim_headshot_kill()], 80)
+    ev['df.headshot.hit'] = ([tim_headshot_hit()], 80)
 
     ev['df.knife.swing'] = ([b.render('knife/swing_%d' % (i + 1), [clip(rpg + f, 0, 0.45)], 0.45, -5.0)
                              for i, f in enumerate(('knifeSlice.ogg', 'knifeSlice2.ogg'))], 12)
@@ -209,6 +210,17 @@ def tim_headshot_kill():
     return 'lairner:df/headshot_kill'
 
 
+def tim_headshot_hit():
+    """df.headshot.hit: Tim's own sound (source/tim/headshot_dmg.m4a, provided by Tim, 1.07 s stereo AAC),
+    a headshot that doesn't kill. The sound runs 0.058-0.435 s (silencedetect -45 dB); trimmed to 0.05-0.45 s,
+    mono, 5 ms fades, Ogg Vorbis."""
+    dst = os.path.join(OUT, 'headshot_hit.ogg')
+    ff(['-i', os.path.join(ROOT, 'source', 'tim', 'headshot_dmg.m4a'),
+        '-af', 'atrim=start=0.05:end=0.45,asetpts=PTS-STARTPTS,afade=t=in:d=0.005,afade=t=out:st=0.395:d=0.005',
+        '-ac', '1', '-ar', str(RATE), '-c:a', 'libvorbis', '-q:a', QUALITY, dst])
+    return 'lairner:df/headshot_hit'
+
+
 SUBTITLES = {
     'df.glock.shot': 'Gunshot', 'df.usp.shot': 'Silenced shot', 'df.deagle.shot': 'Gunshot',
     'df.mac10.shot': 'Gunshot', 'df.mp9.shot': 'Gunshot', 'df.ak.shot': 'Gunshot', 'df.m4s.shot': 'Silenced shot',
@@ -217,6 +229,7 @@ SUBTITLES = {
     'df.bomb.plant': 'Bomb planted', 'df.bomb.defuse': 'Defusing', 'df.bomb.defused': 'Bomb defused',
     'df.bomb.explode': 'Bomb explodes', 'df.flash.explode': 'Flashbang pops', 'df.grenade.bounce': 'Grenade bounces',
     'df.he.explode': 'Grenade explodes', 'df.smoke.pop': 'Smoke hisses', 'df.headshot.kill': 'Headshot kill',
+    'df.headshot.hit': 'Headshot',
 }
 
 

@@ -21,6 +21,9 @@ Free Firearm Sound Library team.
 
 - `df.headshot.kill` (`pack/assets/lairner/sounds/df/headshot_kill.ogg`) comes from a sound provided by Tim
   (`source/tim/headshot.m4a`), trimmed to 0.43-1.62 s and downmixed to mono by `tools/sounds.py`.
+- `df.headshot.hit` (`pack/assets/lairner/sounds/df/headshot_hit.ogg`) comes from a sound provided by Tim
+  (`source/tim/headshot_dmg.m4a`), trimmed to 0.05-0.45 s and downmixed to mono by `tools/sounds.py`.
+- The D-Eagle and AK models are our own (cubes on the shared palette).
 
 ## Everything else
 

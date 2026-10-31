@@ -20,10 +20,10 @@ Set `item_model` on any base item, e.g. `minecraft:item_model="lairner:df/ak"`.
 |---|---|---|
 | `lairner:df/glock` | G18 | Kenney blaster-k |
 | `lairner:df/usp` | USP | Kenney blaster-a + silencer-small |
-| `lairner:df/deagle` | D-Eagle | Kenney blaster-j |
+| `lairner:df/deagle` | D-Eagle | own |
 | `lairner:df/mac10` | M10 | Kenney blaster-c |
 | `lairner:df/mp9` | MP9 | Kenney blaster-i |
-| `lairner:df/ak` | AK | Kenney blaster-n |
+| `lairner:df/ak` | AK | own |
 | `lairner:df/m4s` | M4-S | Kenney blaster-d + silencer-larger |
 | `lairner:df/knife` | Knife | own |
 | `lairner:df/bomb` | Bomb (C4) | own |
@@ -52,7 +52,7 @@ transform chain; real in-game look may differ slightly).
 | `lairner:df.reload.pistol` (2.2 s), `df.reload.smg` (2.7 s), `df.reload.rifle` (2.5 s) | 12 |
 | `lairner:df.dryfire` | 10 |
 | `lairner:df.hit`, `df.headshot` (for the shooter) | 8 |
-| `lairner:df.headshot.kill` (headshot kill, world sound at the victim; mono) | 32 |
+| `lairner:df.headshot.kill` (headshot kill), `df.headshot.hit` (headshot, no kill); world sounds at the victim, mono | 80 / 80 |
 | `lairner:df.knife.swing`, `df.knife.hit` | 12 / 16 |
 | `lairner:df.bomb.beep` | 24 |
 | `lairner:df.bomb.key` (one keypad press while planting), `df.bomb.plant` (armed) | 12 / 32 |
