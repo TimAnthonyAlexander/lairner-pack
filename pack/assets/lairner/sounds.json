@@ -1367,5 +1367,67 @@
       }
     ],
     "subtitle": "Terrorists win"
+  },
+  "df.awp.shot": {
+    "sounds": [
+      {
+        "name": "lairner:df/awp/shot_1",
+        "attenuation_distance": 96
+      },
+      {
+        "name": "lairner:df/awp/shot_2",
+        "attenuation_distance": 96
+      }
+    ],
+    "subtitle": "Loud gunshot"
+  },
+  "df.sawedoff.shot": {
+    "sounds": [
+      {
+        "name": "lairner:df/sawedoff/shot_1",
+        "attenuation_distance": 56
+      }
+    ],
+    "subtitle": "Shotgun blast"
+  },
+  "df.mag7.shot": {
+    "sounds": [
+      {
+        "name": "lairner:df/mag7/shot_1",
+        "attenuation_distance": 56
+      },
+      {
+        "name": "lairner:df/mag7/shot_2",
+        "attenuation_distance": 56
+      }
+    ],
+    "subtitle": "Shotgun blast"
+  },
+  "df.reload.sniper": {
+    "sounds": [
+      {
+        "name": "lairner:df/reload/sniper",
+        "attenuation_distance": 12
+      }
+    ],
+    "subtitle": "Reloading"
+  },
+  "df.reload.shotgun": {
+    "sounds": [
+      {
+        "name": "lairner:df/reload/shotgun",
+        "attenuation_distance": 12
+      }
+    ],
+    "subtitle": "Reloading"
+  },
+  "df.reload.shell": {
+    "sounds": [
+      {
+        "name": "lairner:df/reload/shell",
+        "attenuation_distance": 12
+      }
+    ],
+    "subtitle": "Shell loaded"
   }
 }

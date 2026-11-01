@@ -564,6 +564,143 @@ def mp9_spec():
     return centered(s)
 
 
+AWP_GREEN = (84, 104, 70)
+AWP_GREEN_DARK = (62, 78, 52)
+AWP_BLACK = (36, 38, 44)
+
+
+def awp_spec():
+    """AWP along -Z (z 0 = muzzle), long and heavy: a muzzle brake with slots, a long thick barrel, a black receiver
+    under a big scope (front bell, tube with turrets, eyepiece) on two rings, the bolt handle with a ball knob on
+    the right, a small box magazine, a green two-part stock with thumb hole, cheek rest and a rubber butt pad."""
+    s = []
+    # muzzle brake with two slots, barrel with a thicker shroud near the receiver
+    s.append(([7.45, 8.3, 0], [8.55, 9.5, 2.6], AWP_BLACK))
+    for z in (0.6, 1.5):
+        s.append(([7.35, 8.5, z], [8.65, 9.3, z + 0.4], (12, 12, 16)))
+    s.append(([7.65, 8.5, 2.6], [8.35, 9.3, 17.0], BLACK_STEEL))
+    s.append(([7.55, 8.6, 2.6], [8.45, 9.2, 17.0], BLACK_STEEL))
+    s.append(([7.5, 8.4, 11.0], [8.5, 9.4, 17.5], MATTE))
+    # receiver, ejection port, bolt body
+    s.append(([7.35, 7.7, 16.5], [8.65, 10.1, 28.0], AWP_BLACK))
+    s.append(([8.65, 8.6, 20.0], [8.72, 9.6, 23.0], (14, 14, 18)))
+    s.append(([7.65, 10.1, 25.5], [8.35, 10.5, 28.0], MATTE))
+    # bolt handle (right side) with a ball knob
+    s.append(([8.65, 9.1, 24.6], [9.6, 9.5, 25.2], STEEL_DARK))
+    s.append(([9.6, 8.9, 24.4], [10.2, 9.7, 25.4], STEEL))
+    # scope: rings, tube, front bell, eyepiece, turrets
+    for z in (18.2, 24.6):
+        s.append(([7.55, 10.1, z], [8.45, 11.2, z + 1.0], AWP_BLACK))
+    s.append(([7.35, 11.2, 14.4], [8.65, 12.5, 28.6], AWP_BLACK))
+    s.append(([7.45, 11.1, 14.4], [8.55, 12.6, 28.6], AWP_BLACK))
+    s.append(([7.1, 10.9, 13.2], [8.9, 12.9, 16.4], MATTE))            # front bell
+    s.append(([7.35, 11.15, 13.0], [8.65, 12.65, 13.4], (14, 14, 18)))  # front lens ring
+    s.append(([7.15, 11.0, 27.6], [8.85, 12.8, 30.4], MATTE))          # eyepiece
+    s.append(([7.5, 11.3, 29.6], [8.5, 12.5, 30.6], (12, 12, 16)))
+    s.append(([7.6, 12.6, 21.0], [8.4, 13.4, 22.4], STEEL_DARK))       # elevation turret
+    s.append(([8.6, 11.5, 21.0], [9.4, 12.3, 22.4], STEEL_DARK))       # windage turret
+    # forend and stock (green), thumb hole behind the grip
+    s.append(([7.4, 6.6, 7.0], [8.6, 7.7, 17.0], AWP_GREEN_DARK))      # small forend under the barrel
+    s.append(([7.35, 6.4, 16.5], [8.65, 7.7, 29.0], AWP_GREEN))        # stock under the receiver
+    s.append(([7.4, 7.7, 28.0], [8.6, 10.0, 34.0], AWP_GREEN))         # upper stock to the cheek rest
+    s.append(([7.35, 9.6, 30.4], [8.65, 10.7, 36.0], AWP_GREEN))       # cheek rest
+    s.append(([7.4, 5.8, 31.0], [8.6, 7.7, 37.4], AWP_GREEN))          # lower stock
+    s.append(([7.38, 7.0, 29.0], [8.62, 9.6, 31.6], AWP_GREEN_DARK))   # fills around the thumb hole
+    s.append(([7.35, 5.6, 36.0], [8.65, 10.4, 37.6], AWP_GREEN_DARK))  # butt
+    s.append(([7.3, 5.4, 37.6], [8.7, 10.5, 38.6], (24, 24, 28)))      # rubber pad
+    # pistol grip, trigger guard, trigger
+    for i in range(3):
+        y1 = 6.4 - i * 1.1
+        z0 = 27.0 + i * 0.5
+        s.append(([7.4, y1 - 1.1, z0], [8.6, y1, z0 + 2.6], AWP_GREEN_DARK))
+    s.append(([7.55, 6.0, 22.0], [8.45, 6.4, 27.0], AWP_BLACK))
+    s.append(([7.55, 6.0, 22.0], [8.45, 7.7, 22.4], AWP_BLACK))
+    s.append(([7.9, 6.5, 23.4], [8.1, 7.7, 23.8], MATTE_EDGE))
+    # small box magazine
+    s.append(([7.5, 5.4, 18.4], [8.5, 7.7, 21.4], MATTE))
+    s.append(([7.45, 5.1, 18.3], [8.55, 5.5, 21.5], AWP_BLACK))
+    return centered(s)
+
+
+def sawedoff_spec():
+    """Sawed-Off along -Z (z 0 = muzzle): a short break-action double barrel (two barrels side by side with a
+    center rib and two clamp bands), a short wooden forend, the hinge block with side hammers, and a wooden pistol
+    grip with a small wedge of butt, two triggers in a guard."""
+    s = []
+    s.append(([7.3, 8.5, 2.5], [7.95, 9.4, 11.0], STEEL_DARK))           # left barrel
+    s.append(([8.05, 8.5, 2.5], [8.7, 9.4, 11.0], STEEL_DARK))           # right barrel
+    s.append(([7.95, 8.8, 2.7], [8.05, 9.3, 11.0], BLACK_STEEL))       # rib between them
+    s.append(([7.3, 8.5, 2.5], [8.7, 9.4, 2.85], (14, 14, 18)))          # muzzle edge (dark bore ring)
+    s.append(([7.25, 8.45, 4.2], [8.75, 9.45, 4.8], BLACK_STEEL))      # clamp bands
+    s.append(([7.25, 8.45, 7.2], [8.75, 9.45, 7.8], BLACK_STEEL))
+    s.append(([7.45, 7.5, 4.6], [8.55, 8.5, 10.4], WOOD))              # wooden forend under the barrels
+    s.append(([7.4, 7.4, 5.0], [8.6, 7.7, 10.4], WOOD_DARK))
+    # hinge block and receiver
+    s.append(([7.2, 7.6, 10.4], [8.8, 9.7, 14.2], STEEL))
+    s.append(([7.25, 8.1, 11.0], [7.4, 9.1, 12.6], STEEL_DARK))        # hinge pin and lever plates
+    s.append(([8.6, 8.1, 11.0], [8.75, 9.1, 12.6], STEEL_DARK))
+    s.append(([7.7, 9.7, 13.0], [8.3, 10.0, 14.0], STEEL_DARK))        # top lever
+    s.append(([7.1, 9.2, 13.4], [7.45, 10.0, 14.8], BLACK_STEEL))      # hammers, outside
+    s.append(([8.55, 9.2, 13.4], [8.9, 10.0, 14.8], BLACK_STEEL))
+    # trigger guard and two triggers
+    s.append(([7.55, 6.6, 13.2], [8.45, 7.0, 17.4], STEEL_DARK))
+    s.append(([7.55, 6.6, 13.2], [8.45, 7.7, 13.6], STEEL_DARK))
+    s.append(([7.7, 7.0, 14.4], [7.95, 7.7, 14.8], MATTE_EDGE))
+    s.append(([8.05, 7.0, 15.2], [8.3, 7.7, 15.6], MATTE_EDGE))
+    # wooden grip and a small butt wedge
+    s.append(([7.4, 7.7, 14.2], [8.6, 9.6, 19.6], WOOD))
+    for i in range(3):
+        y1 = 7.7 - i * 1.5
+        z0 = 16.6 + i * 0.7
+        s.append(([7.4, y1 - 1.5, z0], [8.6, y1, z0 + 2.6], WOOD_DARK if i else WOOD))
+    s.append(([7.45, 6.6, 19.6], [8.55, 9.6, 21.4], WOOD_DARK))
+    s.append(([7.4, 6.2, 21.4], [8.6, 9.0, 22.2], (36, 28, 24)))       # butt cap
+    return centered(s)
+
+
+def mag7_spec():
+    """MAG-7 along -Z (z 0 = muzzle): a short barrel with a black perforated heat shield, a long black pump
+    forend, a boxy receiver with a top rail and sights, the box magazine in front of the pistol grip, trigger guard,
+    and a short skeleton stock with a rubber pad."""
+    s = []
+    s.append(([7.6, 8.6, 0], [8.4, 9.4, 3.0], BLACK_STEEL))            # barrel and muzzle
+    s.append(([7.45, 8.45, 0], [8.55, 9.55, 0.5], MATTE))
+    s.append(([7.55, 8.55, 3.0], [8.45, 9.45, 11.0], MATTE))            # heat shield
+    for z in (4.4, 6.0, 7.6, 9.2):
+        s.append(([7.5, 9.0, z], [8.5, 9.55, z + 0.5], (14, 14, 18)))
+    s.append(([7.7, 9.45, 0.4], [8.3, 9.9, 1.0], GRIP_DARK))           # front sight
+    s.append(([7.85, 9.9, 0.45], [8.15, 10.5, 0.9], GRIP_DARK))
+    # pump forend with grooves
+    s.append(([7.35, 7.7, 3.2], [8.65, 9.0, 11.0], GRIP))
+    for z in (4.0, 5.2, 6.4, 7.6, 8.8, 10.0):
+        s.append(([7.3, 7.9, z], [8.7, 8.8, z + 0.45], MATTE))
+    # receiver and top rail with rear sight
+    s.append(([7.35, 7.5, 11.0], [8.65, 10.0, 24.0], BLACK_STEEL))
+    s.append(([7.65, 10.0, 11.4], [8.35, 10.3, 24.0], MATTE))
+    for z in (14.0, 15.2, 16.4):
+        s.append(([7.6, 10.3, z], [8.4, 10.45, z + 0.45], MATTE))
+    s.append(([7.6, 10.3, 22.0], [8.4, 10.9, 23.0], GRIP_DARK))        # rear sight
+    s.append(([8.65, 8.6, 14.5], [8.72, 9.6, 17.6], (14, 14, 18)))     # ejection port
+    s.append(([7.5, 8.5, 12.4], [8.5, 9.6, 13.0], MATTE_EDGE))
+    # box magazine in front of the grip
+    s.append(([7.55, 4.4, 15.0], [8.45, 7.5, 18.6], MATTE))
+    s.append(([7.5, 4.0, 14.9], [8.5, 4.5, 18.7], GRIP_DARK))
+    # trigger guard, trigger, pistol grip
+    s.append(([7.6, 6.4, 19.0], [8.4, 6.8, 22.6], MATTE))
+    s.append(([7.6, 6.4, 19.0], [8.4, 7.5, 19.4], MATTE))
+    s.append(([7.9, 6.7, 20.2], [8.1, 7.5, 20.6], MATTE_EDGE))
+    for i in range(3):
+        y1 = 7.5 - i * 1.5
+        z0 = 22.2 + i * 0.6
+        s.append(([7.45, y1 - 1.5, z0], [8.55, y1, z0 + 2.4], GRIP_DARK))
+    # skeleton stock: upper tube and a lower brace, rubber pad
+    s.append(([7.65, 8.3, 24.0], [8.35, 9.5, 31.0], MATTE))
+    s.append(([7.6, 6.6, 27.4], [8.4, 7.4, 31.0], MATTE))
+    s.append(([7.6, 6.9, 24.0], [8.4, 8.3, 25.0], MATTE))
+    s.append(([7.5, 6.0, 31.0], [8.5, 9.8, 32.2], (24, 24, 28)))
+    return centered(s)
+
+
 def bomb_spec():
     """C4-style charge: three tan bricks, tape, a keypad with a screen, wires."""
     s = []
@@ -612,6 +749,8 @@ def kit_spec():
 PISTOL_DISPLAY = dict(fp_scale=0.62, fp_t=[-2.5, 3.0, -1.0], tp_scale=0.62, tp_t=[0, 0.4, 2.2], gui_scale=0.85)
 SMG_DISPLAY = dict(fp_scale=0.66, fp_t=[-2.5, 3.0, -2.0], tp_scale=0.66, tp_t=[0, 0.6, 2.6], gui_scale=0.8, gui_tilt=12)
 RIFLE_DISPLAY = dict(fp_scale=0.6, fp_t=[-2.5, 3.2, -3.5], tp_scale=0.7, tp_t=[0, 1.0, 2.0], gui_scale=0.6, gui_tilt=25)
+SNIPER_DISPLAY = dict(fp_scale=0.5, fp_t=[-2.5, 3.2, -4.5], tp_scale=0.6, tp_t=[0, 1.0, 2.0], gui_scale=0.5, gui_tilt=25)
+SHOTGUN_DISPLAY = dict(fp_scale=0.62, fp_t=[-2.5, 3.2, -3.0], tp_scale=0.7, tp_t=[0, 1.0, 2.0], gui_scale=0.62, gui_tilt=20)
 
 
 def build(pal):
@@ -660,6 +799,12 @@ def build(pal):
                        'src': 'lairner'}
     models['mp9'] = {'elements': boxes_model(mp9_spec(), pal), 'display': gun_display(**SMG_DISPLAY),
                      'src': 'lairner'}
+    models['awp'] = {'elements': boxes_model(awp_spec(), pal), 'display': gun_display(**SNIPER_DISPLAY),
+                     'src': 'lairner'}
+    models['sawedoff'] = {'elements': boxes_model(sawedoff_spec(), pal), 'display': gun_display(**SMG_DISPLAY),
+                          'src': 'lairner'}
+    models['mag7'] = {'elements': boxes_model(mag7_spec(), pal), 'display': gun_display(**SHOTGUN_DISPLAY),
+                      'src': 'lairner'}
     models['bomb'] = {'elements': boxes_model(bomb_spec(), pal),
                       'display': compact_display(fp_scale=0.55, fp_t=[0, 5.0, -1.0], tp_scale=0.5,
                                                  tp_t=[0, 1.6, 1.2], gui_scale=0.95, ground_scale=0.4), 'src': 'lairner'}
@@ -669,7 +814,7 @@ def build(pal):
     return models
 
 
-GUNS = ('glock', 'usp', 'deagle', 'mac10', 'mp9', 'ak', 'm4s', 'knife')
+GUNS = ('glock', 'usp', 'deagle', 'mac10', 'mp9', 'ak', 'm4s', 'awp', 'sawedoff', 'mag7', 'knife')
 
 
 def main():

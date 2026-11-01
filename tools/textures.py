@@ -6,6 +6,7 @@ Font lairner:df (assets/lairner/font/df.json):
   U+E001  hit marker       title-centered
   U+E002  headshot marker  title-centered
   U+E003  flash            title-centered, covers the screen
+  U+E004  scope overlay    title-centered, covers the screen: black with a round view and a thin cross (AWP, 2026-11-01)
   U+E010  bomb icon        action bar (normal text line)
   U+E011  kit icon
   U+E012  armor (vest) icon
@@ -255,6 +256,47 @@ def feed_sprites_and_glyphs(providers):
         save(os.path.join(bb, n + '.png'), blank(182, 5))
 
 
+# ------------------------------------------------------------ scope overlay
+
+SCOPE_W, SCOPE_H = 2048, 1024      # texels; displayed SCOPE_DISPLAY * 4 GUI px tall, 2:1
+SCOPE_DISPLAY = 270                # provider height: 1080 GUI px tall (the whole screen at GUI scale 1 on 1080p)
+SCOPE_DIAMETER = 245               # the round view in GUI px (1080p at GUI scale 4: 91 % of the screen height)
+
+
+def scope():
+    """U+E004: opaque black everywhere except a round view with a thin black cross (a gap in the middle).
+    Texel = 4 x SCOPE_DISPLAY / SCOPE_H GUI px; the round edge is anti-aliased."""
+    texel = 4.0 * SCOPE_DISPLAY / SCOPE_H
+    radius = SCOPE_DIAMETER / texel / 2
+    cx, cy = SCOPE_W / 2, SCOPE_H / 2
+    black = (0, 0, 0, 255)
+    clear = (0, 0, 0, 0)
+    img = []
+    gap = 7.0
+    for y in range(SCOPE_H):
+        row = []
+        dy = y + 0.5 - cy
+        for x in range(SCOPE_W):
+            dx = x + 0.5 - cx
+            r = math.hypot(dx, dy)
+            if r >= radius + 0.5:
+                row.append(black)
+                continue
+            a = 0.0
+            if r > radius - 0.5:
+                a = r - (radius - 0.5)                       # the edge
+            # thin cross: 1 texel wide lines through the view, a gap around the middle
+            if (abs(dy) < 0.75 and abs(dx) > gap) or (abs(dx) < 0.75 and abs(dy) > gap):
+                a = 1.0
+            if a <= 0:
+                row.append(clear)
+            else:
+                row.append((0, 0, 0, round(255 * min(1.0, a))))
+        img.append(row)
+    img[SCOPE_H - 1][SCOPE_W - 1] = black
+    return img
+
+
 # ------------------------------------------------------------ vanilla overrides
 
 
@@ -292,6 +334,7 @@ def main():
     save(os.path.join(tex, 'hitmarker.png'), hitmarker(6, 14.5, 2.0))
     save(os.path.join(tex, 'headshot.png'), hitmarker(4, 15.9, 3.2))
     save(os.path.join(tex, 'flash.png'), flash())
+    save(os.path.join(tex, 'scope.png'), scope())
     for name, img in icons().items():
         save(os.path.join(tex, 'icon_' + name + '.png'), img)
 
@@ -300,6 +343,8 @@ def main():
         {'type': 'bitmap', 'file': 'lairner:font/df/hitmarker.png', 'height': 8, 'ascent': 1, 'chars': ['']},
         {'type': 'bitmap', 'file': 'lairner:font/df/headshot.png', 'height': 8, 'ascent': 1, 'chars': ['']},
         {'type': 'bitmap', 'file': 'lairner:font/df/flash.png', 'height': 1024, 'ascent': 509, 'chars': ['']},
+        {'type': 'bitmap', 'file': 'lairner:font/df/scope.png', 'height': SCOPE_DISPLAY, 'ascent': SCOPE_DISPLAY // 2 - 3,
+         'chars': ['\ue004']},
     ]
     for i, name in enumerate(('bomb', 'kit', 'armor', 'helmet')):
         providers.append({'type': 'bitmap', 'file': 'lairner:font/df/icon_%s.png' % name,

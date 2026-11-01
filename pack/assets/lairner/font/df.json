@@ -38,6 +38,15 @@
     },
     {
       "type": "bitmap",
+      "file": "lairner:font/df/scope.png",
+      "height": 270,
+      "ascent": 132,
+      "chars": [
+        "\ue004"
+      ]
+    },
+    {
+      "type": "bitmap",
       "file": "lairner:font/df/icon_bomb.png",
       "height": 8,
       "ascent": 7,

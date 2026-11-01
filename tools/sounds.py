@@ -230,7 +230,8 @@ def tim_headshot_hit():
 
 
 # weapon -> attenuation distance (the ranges the library shots had; silenced USP-S and M4-S stay short)
-TIM_SHOTS = {'glock': 56, 'usp': 22, 'deagle': 72, 'mac10': 56, 'mp9': 56, 'ak': 72, 'm4s': 24}
+TIM_SHOTS = {'glock': 56, 'usp': 22, 'deagle': 72, 'mac10': 56, 'mp9': 56, 'ak': 72, 'm4s': 24,
+             'awp': 96, 'sawedoff': 56, 'mag7': 56}   # AWP loud and far, the shotguns medium (2026-11-01)
 
 
 def tim_shots(weapon):
@@ -276,9 +277,38 @@ def tim_shots_only():
     print('gunshots rebuilt: ' + ', '.join('%s %d' % (w, len(data['df.%s.shot' % w]['sounds'])) for w in TIM_SHOTS))
 
 
+def reloads_only():
+    """--reloads (2026-11-01): the AWP, MAG-7 and Sawed-Off reload sounds, derived from the committed reload oggs
+    (no library sources needed): df.reload.sniper = the rifle reload slowed to 3.67 s (the AWP's reload),
+    df.reload.shotgun = the rifle reload a little lower and slower (2.5 s), df.reload.shell = one shell going in
+    (the pistol reload's metal tap and click, 0.5 s)."""
+    rd = os.path.join(OUT, 'reload')
+    ff(['-i', os.path.join(rd, 'rifle.ogg'), '-af', 'atempo=0.68,volume=0dB', '-ac', '1', '-c:a', 'libvorbis',
+        '-q:a', QUALITY, os.path.join(rd, 'sniper.ogg')])
+    ff(['-i', os.path.join(rd, 'rifle.ogg'), '-af', 'asetrate=%d,aresample=%d,atempo=1.0' % (int(RATE * 0.88), RATE),
+        '-ac', '1', '-c:a', 'libvorbis', '-q:a', QUALITY, os.path.join(rd, 'shotgun.ogg')])
+    ff(['-i', os.path.join(rd, 'pistol.ogg'), '-filter_complex',
+        '[0:a]atrim=1.1:1.4,asetpts=PTS-STARTPTS,asetrate=%d,aresample=%d,volume=-3dB[a];'
+        '[0:a]atrim=1.75:2.1,asetpts=PTS-STARTPTS,adelay=170|170,volume=-2dB[b];[a][b]amix=inputs=2:normalize=0,'
+        'atrim=0:0.55,afade=t=out:st=0.4:d=0.15' % (int(RATE * 0.85), RATE),
+        '-ac', '1', '-c:a', 'libvorbis', '-q:a', QUALITY, os.path.join(rd, 'shell.ogg')])
+    path = os.path.join(LA, 'sounds.json')
+    with open(path) as f:
+        data = json.load(f)
+    for name, att in (('sniper', 12), ('shotgun', 12), ('shell', 12)):
+        data['df.reload.' + name] = {'sounds': [{'name': 'lairner:df/reload/' + name, 'attenuation_distance': att}],
+                                     'subtitle': SUBTITLES['df.reload.' + name]}
+    with open(path, 'w') as f:
+        json.dump(data, f, indent=2)
+        f.write('\n')
+    print('reload sounds written: sniper, shotgun, shell')
+
+
 SUBTITLES = {
     'df.glock.shot': 'Gunshot', 'df.usp.shot': 'Silenced shot', 'df.deagle.shot': 'Gunshot',
     'df.mac10.shot': 'Gunshot', 'df.mp9.shot': 'Gunshot', 'df.ak.shot': 'Gunshot', 'df.m4s.shot': 'Silenced shot',
+    'df.awp.shot': 'Loud gunshot', 'df.sawedoff.shot': 'Shotgun blast', 'df.mag7.shot': 'Shotgun blast',
+    'df.reload.sniper': 'Reloading', 'df.reload.shotgun': 'Reloading', 'df.reload.shell': 'Shell loaded',
     'df.reload.pistol': 'Reloading', 'df.reload.smg': 'Reloading', 'df.reload.rifle': 'Reloading',
     'df.knife.swing': 'Knife swings', 'df.knife.hit': 'Knife hits', 'df.bomb.beep': 'Bomb beeps',
     'df.bomb.plant': 'Bomb planted', 'df.bomb.defuse': 'Defusing', 'df.bomb.defused': 'Bomb defused',
@@ -291,6 +321,7 @@ SUBTITLES = {
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--tim-shots', action='store_true', help='only the gunshots (Tim\'s recordings)')
+    ap.add_argument('--reloads', action='store_true', help='only df.reload.sniper/shotgun/shell (derived from the committed reload sounds)')
     ap.add_argument('--defuse', action='store_true', help='only df.bomb.defuse (synthesized)')
     ap.add_argument('--ffsl')
     ap.add_argument('--kenney')
@@ -300,6 +331,9 @@ def main():
         return
     if a.defuse:
         print(defuse_beeps())
+        return
+    if a.reloads:
+        reloads_only()
         return
     if not a.ffsl or not a.kenney:
         ap.error('--ffsl and --kenney are needed for a full build')

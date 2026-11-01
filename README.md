@@ -25,6 +25,9 @@ Set `item_model` on any base item, e.g. `minecraft:item_model="lairner:df/ak"`.
 | `lairner:df/mp9` | MP9 | own: black polymer MP9, top rail, foregrip, magazine in the grip, skeleton stock (2026-11-01) |
 | `lairner:df/ak` | AK | own |
 | `lairner:df/m4s` | M4-S | own: black M4A1-S, slim handguard, long suppressor, flat-top rail, collapsible stock (2026-11-01) |
+| `lairner:df/awp` | AWP | own: long olive-green stock with thumb hole, black receiver and barrel with a muzzle brake, big scope on two rings with turrets, bolt handle (2026-11-01) |
+| `lairner:df/sawedoff` | Sawed-Off | own: short double barrel with a center rib and clamp bands, wooden forend and pistol grip, side hammers (2026-11-01) |
+| `lairner:df/mag7` | MAG-7 | own: black compact shotgun, perforated heat shield, grooved pump forend, top rail, box magazine in front of the grip, skeleton stock (2026-11-01) |
 | `lairner:df/knife` | Knife | own |
 | `lairner:df/bomb` | Bomb (C4) | own |
 | `lairner:df/kit` | Defuse kit | own |
@@ -62,9 +65,9 @@ lines such as "Bingo, bango, bongo; bish, bash, bosh." and the classics). Range 
 
 The gunshots are Tim's own recordings (2026-11-01; `source/tim/shots/<weapon>_<n>.flac`, one
 sound entry per recording, the client picks one at random): G18 2, USP-S 3, Desert Eagle 2, MAC-10 3,
-MP9 4, AK 1, M4-S 1. `python3 tools/sounds.py --tim-shots` rebuilds just them (no library sources needed).
+MP9 4, AK 1, M4-S 1, AWP 2 (96 blocks), Sawed-Off 1, MAG-7 2 (56 blocks each; 2026-11-01). `python3 tools/sounds.py --tim-shots` rebuilds just them (no library sources needed).
 
-| `lairner:df.reload.pistol` (2.2 s), `df.reload.smg` (2.7 s), `df.reload.rifle` (2.5 s) | 12 |
+| `lairner:df.reload.pistol` (2.2 s), `df.reload.smg` (2.7 s), `df.reload.rifle` (2.5 s), `df.reload.sniper` (3.67 s, the rifle one slowed), `df.reload.shotgun` (2.5 s, lower), `df.reload.shell` (one shell, 0.55 s; `sounds.py --reloads`) | 12 |
 | `lairner:df.dryfire` | 10 |
 | `lairner:df.hit`, `df.headshot` (for the shooter) | 8 |
 | `lairner:df.headshot.kill` (headshot kill), `df.headshot.hit` (headshot, no kill); world sounds at the victim, mono | 80 / 80 |
@@ -100,6 +103,7 @@ quieter) and send them per player (`Player#playSound(Location, ...)`):
 | `` | hit marker | title |
 | `` | headshot marker | title |
 | `` | full-screen white flash | title |
+| `` | scope overlay: black with a round view (245 GUI px) and a thin cross, 2048x1024 texels drawn 1080 GUI px tall | title (while an AWP is zoomed) |
 | `` `` `` `` | bomb, kit, armor, helmet icons | action bar (normal line height) |
 | ``-`` | space -1, -2, -4 ... -128 | layout |
 | ``-`` | space +1, +2, +4 ... +128 | layout |
