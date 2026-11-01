@@ -18,6 +18,12 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PACK = os.path.join(ROOT, 'pack')
 DIST = os.path.join(ROOT, 'dist')
 ZIP = os.path.join(DIST, 'lairner-pack.zip')
+DIST_TEST = os.path.join(ROOT, 'dist-test')
+ZIP_TEST = os.path.join(DIST_TEST, 'lairner-pack-test.zip')
+# The core shader (kill feed anchored to the right screen edge) ships only in the test zip until Tim has
+# confirmed it on a client; then set this to True and rebuild (dist/ gets it too).
+SHADER_LIVE = False
+SHADER_DIR = 'assets/minecraft/shaders/'
 PACK_FORMAT = 97          # 26.3 client: resource pack format 97.1
 MAX_ELEMENTS = 300
 
@@ -128,15 +134,18 @@ def validate():
             err('missing hud sprite %s' % n)
 
 
-def build_zip():
-    os.makedirs(DIST, exist_ok=True)
+def build_zip(zip_path, with_shaders):
+    os.makedirs(os.path.dirname(zip_path), exist_ok=True)
     files = []
     for dp, _, fns in os.walk(PACK):
         for fn in fns:
             full = os.path.join(dp, fn)
-            files.append((os.path.relpath(full, PACK).replace(os.sep, '/'), full))
+            arc = os.path.relpath(full, PACK).replace(os.sep, '/')
+            if arc.startswith(SHADER_DIR) and not with_shaders:
+                continue
+            files.append((arc, full))
     files.sort()
-    tmp = ZIP + '.tmp'
+    tmp = zip_path + '.tmp'
     with zipfile.ZipFile(tmp, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         for arc, full in files:
             info = zipfile.ZipInfo(arc, date_time=(1980, 1, 1, 0, 0, 0))
@@ -144,10 +153,10 @@ def build_zip():
             info.external_attr = 0o644 << 16
             with open(full, 'rb') as f:
                 z.writestr(info, f.read())
-    os.replace(tmp, ZIP)
-    data = open(ZIP, 'rb').read()
+    os.replace(tmp, zip_path)
+    data = open(zip_path, 'rb').read()
     sha1 = hashlib.sha1(data).hexdigest()
-    with open(ZIP + '.sha1', 'w') as f:
+    with open(zip_path + '.sha1', 'w') as f:
         f.write(sha1 + '\n')
     return sha1, len(data), len(files)
 
@@ -161,9 +170,16 @@ def main():
     if errors:
         print('\n'.join('ERROR ' + e for e in errors))
         sys.exit(1)
-    sha1, size, n = build_zip()
-    print('dist/lairner-pack.zip  %d files  %.1f KB' % (n, size / 1024))
+    sha1, size, n = build_zip(ZIP, SHADER_LIVE)
+    print('dist/lairner-pack.zip  %d files  %.1f KB  (shader: %s)' % (n, size / 1024, SHADER_LIVE))
     print('SHA-1 %s' % sha1)
+    if not SHADER_LIVE:
+        sha1, size, n = build_zip(ZIP_TEST, True)
+        print('dist-test/lairner-pack-test.zip  %d files  %.1f KB  (with the core shader)' % (n, size / 1024))
+        print('SHA-1 %s' % sha1)
+    elif os.path.exists(ZIP_TEST):
+        os.remove(ZIP_TEST)
+        os.remove(ZIP_TEST + '.sha1')
 
 
 if __name__ == '__main__':

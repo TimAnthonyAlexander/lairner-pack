@@ -158,3 +158,13 @@ inputs give the same SHA-1. After a change, commit `dist/` too; the server
 config needs the new SHA-1.
 
 Credits and licenses: [LICENSE.md](LICENSE.md).
+
+## Core shader (kill feed at the right screen edge, 2026-11-01)
+
+`assets/minecraft/shaders/core/text.vsh` is the 26.3 vanilla `text.vsh` plus one block (`#ifdef IS_GUI`, the GUI text
+pipeline only) and two lines in `main()`. Text in the reserved colors `#FEFEFD`, `#FFAA01`, `#55FFFE` (shadow:
+ARGB `#FE0E0F10`) is moved right by `guiWidth / 2 - 200 - 4` GUI px (`guiWidth = 2 / ProjMat[0][0]`), so the
+kill feed boss bar lines, which the server centers with their right edge 200 px right of the center, end 4 px left
+of the real right edge at every GUI scale and window size. Without the shader (Iris, a failed shader) the colors
+look like white, gold and aqua and the feed stays at the fixed offset. Until it is confirmed on a client the
+shader is only in `dist-test/lairner-pack-test.zip` (`SHADER_LIVE` in `tools/build.py`).
