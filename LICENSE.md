@@ -18,6 +18,12 @@
 CC0 needs no attribution; we credit them anyway. Thank you, Kenney and the
 Free Firearm Sound Library team.
 
+## Generated
+
+- The voice lines (`pack/assets/lairner/sounds/df/voice/`) are synthesized with eSpeak NG
+  (https://github.com/espeak-ng/espeak-ng, GPL-3.0; the program's output is not covered by its license)
+  by `tools/voice.py`.
+
 ## Provided by Tim
 
 - `df.headshot.kill` (`pack/assets/lairner/sounds/df/headshot_kill.ogg`) comes from a sound provided by Tim

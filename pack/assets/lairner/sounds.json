@@ -293,5 +293,104 @@
       }
     ],
     "subtitle": "Silenced shot"
+  },
+  "df.voice.planted": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/planted",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "The bomb has been planted"
+  },
+  "df.voice.defused": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/defused",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "The bomb has been defused"
+  },
+  "df.voice.ctwin": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/ctwin",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Counter-Terrorists win"
+  },
+  "df.voice.twin": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/twin",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Terrorists win"
+  },
+  "df.voice.he": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/he_1",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_2",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_3",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_4",
+        "attenuation_distance": 28
+      }
+    ],
+    "subtitle": "Fire in the hole!"
+  },
+  "df.voice.flash": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/flash_1",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/flash_2",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/flash_3",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/flash_4",
+        "attenuation_distance": 28
+      }
+    ],
+    "subtitle": "Flashbang out!"
+  },
+  "df.voice.smoke": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/smoke_1",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_2",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_3",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_4",
+        "attenuation_distance": 28
+      }
+    ],
+    "subtitle": "Smoke out!"
   }
 }

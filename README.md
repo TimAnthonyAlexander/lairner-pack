@@ -50,6 +50,12 @@ transform chain; real in-game look may differ slightly).
 | `lairner:df.ak.shot`, `df.deagle.shot` | 72 |
 | `lairner:df.usp.shot`, `df.m4s.shot` (silenced) | 22 / 24 |
 
+Voice lines (`lairner:df.voice.*`, 2026-11-01, `tools/voice.py`): old-school robotic TTS (eSpeak NG via the
+`espeakng_loader` wheel, deep, lo-fi: 11 kHz, telephone band, light bit crush). Announcer: `planted`, `defused`,
+`ctwin` ("Counter-Terrorists win."), `twin`; callouts with 4 variants each (3 voice types): `he` ("Fire in the
+hole!", ...), `flash` ("Flashbang out!", ...), `smoke` ("Smoke out!", ...). Range 16 (announcer, played at each
+listener) / 28 (callouts, from the thrower).
+
 The gunshots are Tim's own recordings (2026-11-01; `source/tim/shots/<weapon>_<n>.flac`, one
 sound entry per recording, the client picks one at random): G18 2, USP-S 3, Desert Eagle 2, MAC-10 3,
 MP9 4, AK 1, M4-S 1. `python3 tools/sounds.py --tim-shots` rebuilds just them (no library sources needed).
