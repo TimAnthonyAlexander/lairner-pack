@@ -55,8 +55,8 @@ via the `espeakng_loader` wheel, deep, lo-fi: 11 kHz, telephone band, light bit 
 `ctwin` ("Counter-Terrorists win."), `twin`. Everything the players say is ElevenLabs Eleven v3 (`eleven_v3`,
 Creator plan; API output cached in `source/eleven/`, so a rebuild costs nothing): grenade callouts per side,
 6 lines each (`he_ct`, `he_t`, `flash_ct`, `flash_t`, `smoke_ct`, `smoke_t`: "Fire in the hole!", "Flashbang
-out!", "Smoke out!", ...), CT voices British/American, T voices accented (Russian, Balkan, Greek) and
-Australian; round start lines, 32 per side (`goct1`-`goct32`, `got1`-`got32`: the CS2 agents' round start
+out!", "Smoke out!", ...), American soldiers shouting (v3 tags `[shouting]`, `[excited]`, `[aggressive]`,
+`[battle cry]`, stability 0.0 "Creative"; British only for the SAS lines, Australian for the "bloody" ones); round start lines, 32 per side (`goct1`-`goct32`, `got1`-`got32`: the CS2 agents' round start
 lines such as "Bingo, bango, bongo; bish, bash, bosh." and the classics). Range 16 (played at each listener)
 / 28 (callouts, from the thrower).
 

@@ -52,9 +52,16 @@ V = {  # ElevenLabs voices (premade and library voices of the account)
     'slobodan': 'adxhr4Ei7ASJ3Cz7fxwX',  # Balkan
     'atlas': 'ejJ1ETWS2ohLMMeCu1H3',     # Greek
     'charlie': 'IKne3meq5aSn9XLyUdCD',   # Australian
+    'liam': 'TX3LPaxmHKxFdv7VOQHJ',      # American, energetic
+    'chris': 'iP95p4xoKVk53GoZ742B',     # American, down-to-earth
 }
-CT_VOICES = ['george', 'adam', 'daniel', 'harry', 'graham', 'brian', 'connery']
-T_VOICES = ['maxim', 'slobodan', 'roman', 'charlie', 'atlas', 'callum']
+# 2026-11-01 (Tim: "a Slavic man in monotone or a polite Englishman instead of American war phrases with
+# exclamation"): American soldiers shouting; British only for the SAS lines, Australian for the "bloody" ones
+CT_VOICES = ['adam', 'connery', 'brian', 'chris', 'harry']
+T_VOICES = ['harry', 'callum', 'liam', 'chris', 'adam']
+STABILITY = 0.0   # Eleven v3 "Creative": the most expressive
+# delivery tags, cycled per line (callouts always shout)
+GO_TAGS = ['[shouting]', '[excited] [shouting]', '[aggressive] [shouting]', '[battle cry]', '[pumped up] [shouting]']
 
 # grenade callouts: the thrower's side picks the set (df.voice.<kind>_<side>), the client one of the lines
 CALLOUTS = {
@@ -72,38 +79,38 @@ GO_CT = [
     ("Remove any doubts in your head. It's us, or them.", 'george'),
     ('Remember! This is bandit country. Shoot everything that moves.', 'daniel'),
     ("Remember! This isn't the killing house anymore! This is real life.", 'graham'),
-    ("There's no stopping us!", 'harry'), ("Let's get our heads in the game!", 'adam'),
-    ("Be careful, let's all make it home tonight.", 'brian'), ("Come on, let's get this started.", 'connery'),
-    ('Does anyone have a plan?', 'callum'), ('Valor and discipline, mon ami.', 'george'),
-    ('Fortune favors the bored.', 'daniel'), ('Justice comes for them.', 'connery'),
-    ('Today is not the day we die.', 'brian'), ('After we win, drinks are on me.', 'harry'),
-    ("Let's make this quick.", 'adam'), ("Let's do this by the book, people.", 'connery'),
-    ("These guys don't have a chance in hell.", 'harry'), ("Let's get in there, and get out.", 'adam'),
-    ('Alright, keep it together, we got this.', 'brian'),
-    ('If we keep this up, we could make it back in time for waffles.', 'callum'),
-    ('Anyone else here for the pickle party?', 'callum'), ("Let's wrap it up.", 'connery'),
-    ("This is it, let's go!", 'harry'), ('Buckle up, bad guys!', 'adam'),
-    ('Just another day in the office for us!', 'brian'),
+    ("There's no stopping us!", None), ("Let's get our heads in the game!", None),
+    ("Be careful, let's all make it home tonight.", None), ("Come on, let's get this started.", None),
+    ('Does anyone have a plan?', None), ('Valor and discipline, mon ami.', None),
+    ('Fortune favors the bored.', None), ('Justice comes for them.', None),
+    ('Today is not the day we die.', None), ('After we win, drinks are on me.', None),
+    ("Let's make this quick.", None), ("Let's do this by the book, people.", None),
+    ("These guys don't have a chance in hell.", None), ("Let's get in there, and get out.", None),
+    ('Alright, keep it together, we got this.', None),
+    ('If we keep this up, we could make it back in time for waffles.', None),
+    ('Anyone else here for the pickle party?', None), ("Let's wrap it up.", None),
+    ("This is it, let's go!", None), ('Buckle up, bad guys!', None),
+    ('Just another day in the office for us!', None),
     ('Go, go, go!', None), ('Lock and load!', None), ('Move out!', None), ("Let's move out!", None),
     ('Stick together, team.', None),
 ]
 GO_T = [
-    ('This is where we get our revenge.', 'maxim'), ('You will cry like babies before you die.', 'roman'),
-    ('We will dance on your graves!', 'maxim'), ('You are stupid to think you can win.', 'roman'),
-    ('This is our land.', 'slobodan'), ('Fear us.', 'roman'), ('Move it!', 'slobodan'),
-    ('Move, my brothers!', 'slobodan'), ('Let us be safe, and swift.', 'slobodan'),
-    ('We will make them regret this day.', 'roman'), ("Let's go, my friends.", 'atlas'),
-    ('We will make them cry.', 'atlas'), ('We will drive them from our lands.', 'atlas'),
-    ("Let's get this party started.", 'callum'), ('Good day to die, people.', 'callum'),
-    ("Let's go!", 'callum'), ("Let's get in and out.", 'callum'),
+    ('This is where we get our revenge.', None), ('You will cry like babies before you die.', None),
+    ('We will dance on your graves!', None), ('You are stupid to think you can win.', None),
+    ('This is our land.', None), ('Fear us.', None), ('Move it!', None),
+    ('Move, my brothers!', None), ('Let us be safe, and swift.', None),
+    ('We will make them regret this day.', None), ("Let's go, my friends.", None),
+    ('We will make them cry.', None), ('We will drive them from our lands.', None),
+    ("Let's get this party started.", None), ('Good day to die, people.', None),
+    ("Let's go!", None), ("Let's get in and out.", None),
     ("Look, it's simple. All we gotta do is go in there, plant the bomb, get the cash, and get out. "
      "Not so bloody hard, is it?", 'charlie'),
     ('Okay, here we bloody go!', 'charlie'), ("Let's send 'em to the sick bay, shall we?", 'charlie'),
     ('Have a go, you mongrel dogs!', 'charlie'), ("Okay, I'm feeling a bit good about this one.", 'charlie'),
-    ("Who's ready to start trying?", 'callum'), ("Let's go ruin someone's day.", 'callum'),
-    ("We do the winning, they do the dying.", 'maxim'), ('We kneel for no one!', 'roman'),
-    ('Let us send them home!', 'roman'), ('We will take everything from them.', 'maxim'),
-    ('They want a body count. So be it.', 'slobodan'),
+    ("Who's ready to start trying?", None), ("Let's go ruin someone's day.", None),
+    ("We do the winning, they do the dying.", None), ('We kneel for no one!', None),
+    ('Let us send them home!', None), ('We will take everything from them.', None),
+    ('They want a body count. So be it.', None),
     ('Go, go, go!', None), ('Lock and load!', None), ('Move out!', None),
 ]
 
@@ -224,7 +231,7 @@ def main():
         for side, voices in (('ct', CT_VOICES), ('t', T_VOICES)):
             names = []
             for i, line in enumerate(lines):
-                mp3 = eleven('[shouting] ' + line, voices[i % len(voices)], key, 0.5)
+                mp3 = eleven('[shouting] ' + line, voices[i % len(voices)], key, STABILITY)
                 n = '%s_%s_%d' % (kind, side, i + 1)
                 finish(mp3, os.path.join(OUT, n + '.ogg'), 'highpass=f=70')
                 names.append(n)
@@ -238,7 +245,9 @@ def main():
             if voice is None:
                 voice = voices[nxt % len(voices)]
                 nxt += 1
-            mp3 = eleven(line, voice, key, 0.5)
+            # war phrases end with an exclamation mark, not a full stop (questions stay questions)
+            said = line[:-1] + '!' if line.endswith('.') else line
+            mp3 = eleven(GO_TAGS[i % len(GO_TAGS)] + ' ' + said, voice, key, STABILITY)
             n = 'go%s%d' % (side, i + 1)
             finish(mp3, os.path.join(OUT, n + '.ogg'), 'highpass=f=70')
             entry('df.voice.' + n, [n], 16, line.rstrip('!.'))
