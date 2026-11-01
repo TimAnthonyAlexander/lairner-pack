@@ -154,10 +154,7 @@ def recipes(b):
         clip(rpg + 'metalLatch.ogg', 0, 0.3),
         synth(beep % (1600, 0.1), delay=0.3, filt='afade=t=out:st=0.07:d=0.03', gain=12),
         synth(beep % (2100, 0.16), delay=0.45, filt='afade=t=out:st=0.1:d=0.06', gain=12)], 0.7, -3.0)], 32)
-    ev['df.bomb.defuse'] = ([b.render('bomb/defuse', [
-        clip(rpg + 'metalLatch.ogg', 0, 0.3),
-        clip(rpg + 'metalClick.ogg', 0, 0.3, gain=-3, delay=0.35),
-        clip(rpg + 'beltHandle1.ogg', 0, 0.3, gain=-6, delay=0.7)], 1.1, -4.0)], 16)
+    ev['df.bomb.defuse'] = ([defuse_beeps()], 16)
     ev['df.bomb.defused'] = ([b.render('bomb/defused', [
         synth(beep % (2100, 0.1), filt='afade=t=out:st=0.07:d=0.03'),
         synth(beep % (1600, 0.1), delay=0.13, filt='afade=t=out:st=0.07:d=0.03'),
@@ -189,6 +186,25 @@ def recipes(b):
               filt='highpass=f=900,lowpass=f=5000,afade=t=in:d=0.15,afade=t=out:st=0.8:d=2.7', gain=-6)],
         3.5, -3.0)], 32)
     return ev
+
+
+def defuse_beeps():
+    """df.bomb.defuse (Tim, 2026-11-01: a digital triple beep like CS, not the latch/cable clips it was): three
+    70 ms beeps 50 ms apart, a square wave at 1950 Hz (bright, electronic) low-passed at 6 kHz, 4 ms ramps against
+    clicks, peak -3 dB, mono. Synthesized here, no sources needed (--defuse rebuilds just this)."""
+    dst = os.path.join(OUT, 'bomb', 'defuse.ogg')
+    on, gap, f, ramp = 0.07, 0.05, 1950, 0.004
+    starts = [i * (on + gap) for i in range(3)]
+    env = '+'.join('between(t,%.3f,%.3f)*min(1,(t-%.3f)/%.3f)*min(1,(%.3f-t)/%.3f)' % (a, a + on, a, ramp, a + on, ramp)
+                   for a in starts)
+    dur = starts[-1] + on + 0.02
+    with tempfile.TemporaryDirectory() as td:
+        wav = os.path.join(td, 'd.wav')
+        ff(['-f', 'lavfi', '-i', "aevalsrc='0.5*sgn(sin(2*PI*%d*t))*(%s)':s=%d:d=%.3f" % (f, env, RATE, dur),
+            '-af', 'lowpass=f=6000', '-ac', '1', wav])
+        gain = -3.0 - peak_db(wav)
+        ff(['-i', wav, '-af', 'volume=%.2fdB' % gain, '-ac', '1', '-c:a', 'libvorbis', '-q:a', QUALITY, dst])
+    return 'lairner:df/bomb/defuse'
 
 
 def tim_headshot_kill():
@@ -275,11 +291,15 @@ SUBTITLES = {
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--tim-shots', action='store_true', help='only the gunshots (Tim\'s recordings)')
+    ap.add_argument('--defuse', action='store_true', help='only df.bomb.defuse (synthesized)')
     ap.add_argument('--ffsl')
     ap.add_argument('--kenney')
     a = ap.parse_args()
     if a.tim_shots:
         tim_shots_only()
+        return
+    if a.defuse:
+        print(defuse_beeps())
         return
     if not a.ffsl or not a.kenney:
         ap.error('--ffsl and --kenney are needed for a full build')

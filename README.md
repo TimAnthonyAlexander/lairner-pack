@@ -71,7 +71,7 @@ MP9 4, AK 1, M4-S 1. `python3 tools/sounds.py --tim-shots` rebuilds just them (n
 | `lairner:df.knife.swing`, `df.knife.hit` | 12 / 16 |
 | `lairner:df.bomb.beep` | 24 |
 | `lairner:df.bomb.key` (one keypad press while planting), `df.bomb.plant` (armed) | 12 / 32 |
-| `lairner:df.bomb.defuse` (defuse starts), `df.bomb.defused` | 16 / 32 |
+| `lairner:df.bomb.defuse` (defuse starts: a synthesized digital triple beep, `sounds.py --defuse`), `df.bomb.defused` | 16 / 32 |
 | `lairner:df.bomb.explode` | 160 |
 | `lairner:df.flash.ring` (for the flashed player), `df.flash.explode` | 8 / 64 |
 | `lairner:df.grenade.bounce` | 20 |
