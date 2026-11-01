@@ -108,17 +108,9 @@ def recipes(b):
         return [b.render('%s_%d' % (name, i + 1), [clip(ref, t - lead, dur, filt)], dur, peak)
                 for i, t in enumerate(onsets)]
 
-    ev['df.glock.shot'] = (shots('glock/shot', 'ffsl:Walther PPQ/X_39P.wav', [1.40, 6.44, 10.66], 0.55), 56)
-    ev['df.usp.shot'] = (shots('usp/shot', 'ffsl:Ruger Mark III/R_30P.wav', [0.45, 3.87], 0.32,
-                               SILENCED, peak=-7.0), 22)
-    ev['df.deagle.shot'] = (shots('deagle/shot', 'ffsl:1911/A_42P.wav', [0.94, 5.00], 0.8,
-                                  'asetrate=%d,aresample=%d' % (RATE * 0.88, RATE)), 72)
-    ev['df.mac10.shot'] = (shots('mac10/shot', 'ffsl:Carl Gustav M45/G_31P.wav', [0.31, 3.50, 6.72], 0.45), 56)
-    ev['df.mp9.shot'] = (shots('mp9/shot', 'ffsl:PPSh/P_30P.wav', [0.96, 4.38, 8.24], 0.45,
-                               'asetrate=%d,aresample=%d' % (RATE * 1.06, RATE)), 56)
-    ev['df.ak.shot'] = (shots('ak/shot', 'ffsl:AK-47/C_28P.wav', [0.61, 3.25, 6.02], 0.7), 72)
-    ev['df.m4s.shot'] = (shots('m4s/shot', 'ffsl:AR-15/D_32P.wav', [0.70, 5.64], 0.34,
-                               SILENCED, peak=-6.0), 24)
+    # gunshots: Tim's own recordings (2026-11-01, source/tim/shots), replacing the library clips
+    for w, att in TIM_SHOTS.items():
+        ev['df.%s.shot' % w] = (tim_shots(w), att)
 
     rpg, imp, ui, sci = 'rpg-audio:', 'impact-sounds:', 'interface-sounds:', 'sci-fi-sounds:'
     ev['df.reload.pistol'] = ([b.render('reload/pistol', [
@@ -221,6 +213,53 @@ def tim_headshot_hit():
     return 'lairner:df/headshot_hit'
 
 
+# weapon -> attenuation distance (the ranges the library shots had; silenced USP-S and M4-S stay short)
+TIM_SHOTS = {'glock': 56, 'usp': 22, 'deagle': 72, 'mac10': 56, 'mp9': 56, 'ak': 72, 'm4s': 24}
+
+
+def tim_shots(weapon):
+    """df.<weapon>.shot: Tim's own recordings (provided 2026-11-01 as 44.1 kHz stereo WAV, kept lossless in
+    source/tim/shots/<weapon>_<n>.flac; original names glock_01.., usp_01.., deagle_01.., mac10_01..,
+    mp9_01.., ak47_01, m4a1_silencer_01). Each starts at the shot; mono (a stereo file plays non-positional),
+    trailing silence under -55 dB cut, 10 ms fade-out, peak -1 dB (they come at 0 dB), Ogg Vorbis.
+    One sound entry per recording: the client picks one at random per shot."""
+    src = os.path.join(ROOT, 'source', 'tim', 'shots')
+    names = sorted((f for f in os.listdir(src) if re.fullmatch(r'%s_\d+\.flac' % weapon, f)), key=lambda f: int(re.findall(r'\d+', f)[-1]))
+    os.makedirs(os.path.join(OUT, weapon), exist_ok=True)
+    for f in os.listdir(os.path.join(OUT, weapon)):
+        if f.startswith('shot_'):
+            os.remove(os.path.join(OUT, weapon, f))
+    out = []
+    for i, fn in enumerate(names, 1):
+        dst = os.path.join(OUT, weapon, 'shot_%d.ogg' % i)
+        with tempfile.TemporaryDirectory() as td:
+            wav = os.path.join(td, 'a.wav')
+            ff(['-i', os.path.join(src, fn), '-af',
+                'areverse,silenceremove=start_periods=1:start_threshold=-55dB,afade=t=in:d=0.01,areverse',
+                '-ac', '1', '-ar', str(RATE), wav])
+            gain = -1.0 - peak_db(wav)
+            ff(['-i', wav, '-af', 'volume=%.2fdB' % gain, '-ac', '1', '-c:a', 'libvorbis', '-q:a', QUALITY, dst])
+        out.append('lairner:df/%s/shot_%d' % (weapon, i))
+    return out
+
+
+def tim_shots_only():
+    """--tim-shots: rebuild only the gunshots from source/tim/shots and update their sounds.json entries
+    (no library sources needed)."""
+    path = os.path.join(LA, 'sounds.json')
+    with open(path) as f:
+        data = json.load(f)
+    for w, att in TIM_SHOTS.items():
+        name = 'df.%s.shot' % w
+        entry = {'sounds': [{'name': n, 'attenuation_distance': att} for n in tim_shots(w)]}
+        entry['subtitle'] = SUBTITLES[name]
+        data[name] = entry
+    with open(path, 'w') as f:
+        json.dump(data, f, indent=2)
+        f.write('\n')
+    print('gunshots rebuilt: ' + ', '.join('%s %d' % (w, len(data['df.%s.shot' % w]['sounds'])) for w in TIM_SHOTS))
+
+
 SUBTITLES = {
     'df.glock.shot': 'Gunshot', 'df.usp.shot': 'Silenced shot', 'df.deagle.shot': 'Gunshot',
     'df.mac10.shot': 'Gunshot', 'df.mp9.shot': 'Gunshot', 'df.ak.shot': 'Gunshot', 'df.m4s.shot': 'Silenced shot',
@@ -235,9 +274,15 @@ SUBTITLES = {
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--ffsl', required=True)
-    ap.add_argument('--kenney', required=True)
+    ap.add_argument('--tim-shots', action='store_true', help='only the gunshots (Tim\'s recordings)')
+    ap.add_argument('--ffsl')
+    ap.add_argument('--kenney')
     a = ap.parse_args()
+    if a.tim_shots:
+        tim_shots_only()
+        return
+    if not a.ffsl or not a.kenney:
+        ap.error('--ffsl and --kenney are needed for a full build')
     b = Builder(a.ffsl, a.kenney)
     events = recipes(b)
     out = {}

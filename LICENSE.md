@@ -11,8 +11,8 @@
   dry fire, hit tick, headshot, knife, grenade bounce, explosions.
 - **The Free Firearm Sound Library** (Ben Jaszczak et al.,
   https://opengameart.org/content/the-free-firearm-sound-library), CC0 1.0.
-  Gunshots: Walther PPQ, Ruger Mark III, 1911, Carl Gustav M45, PPSh,
-  AK-47, AR-15.
+  Gunshots until 2026-11-01 (Walther PPQ, Ruger Mark III, 1911, Carl Gustav
+  M45, PPSh, AK-47, AR-15); no longer in the pack.
 
 CC0 needs no attribution; we credit them anyway. Thank you, Kenney and the
 Free Firearm Sound Library team.
@@ -23,6 +23,8 @@ Free Firearm Sound Library team.
   (`source/tim/headshot.m4a`), trimmed to 0.43-1.62 s and downmixed to mono by `tools/sounds.py`.
 - `df.headshot.hit` (`pack/assets/lairner/sounds/df/headshot_hit.ogg`) comes from a sound provided by Tim
   (`source/tim/headshot_dmg.m4a`), trimmed to 0.05-0.45 s and downmixed to mono by `tools/sounds.py`.
+- The gunshots (`pack/assets/lairner/sounds/df/<weapon>/shot_<n>.ogg`) are Tim's own recordings
+  (2026-11-01, `source/tim/shots/`), downmixed to mono, trailing silence cut and peak -1 dB by `tools/sounds.py`.
 - The D-Eagle and AK models are our own (cubes on the shared palette).
 
 ## Everything else

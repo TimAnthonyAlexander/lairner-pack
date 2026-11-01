@@ -49,6 +49,11 @@ transform chain; real in-game look may differ slightly).
 | `lairner:df.glock.shot`, `df.mac10.shot`, `df.mp9.shot` | 56 |
 | `lairner:df.ak.shot`, `df.deagle.shot` | 72 |
 | `lairner:df.usp.shot`, `df.m4s.shot` (silenced) | 22 / 24 |
+
+The gunshots are Tim's own recordings (2026-11-01; `source/tim/shots/<weapon>_<n>.flac`, one
+sound entry per recording, the client picks one at random): G18 2, USP-S 3, Desert Eagle 2, MAC-10 3,
+MP9 4, AK 1, M4-S 1. `python3 tools/sounds.py --tim-shots` rebuilds just them (no library sources needed).
+
 | `lairner:df.reload.pistol` (2.2 s), `df.reload.smg` (2.7 s), `df.reload.rifle` (2.5 s) | 12 |
 | `lairner:df.dryfire` | 10 |
 | `lairner:df.hit`, `df.headshot` (for the shooter) | 8 |
@@ -127,7 +132,7 @@ python3 tools/build.py          # models + textures + checks + dist zip
 python3 tools/preview.py        # previews/*.png
 ```
 
-Sounds are committed as OGG. To rebuild them, download The Free Firearm
+Sounds are committed as OGG. To rebuild the library and synthesized ones, download The Free Firearm
 Sound Library ("Prepared SFX Library.7z") and the four Kenney audio packs
 (RPG Audio, Impact Sounds, Interface Sounds, Sci-fi Sounds), extract each
 Kenney pack into `<dir>/<rpg-audio|impact-sounds|interface-sounds|sci-fi-sounds>/`,
