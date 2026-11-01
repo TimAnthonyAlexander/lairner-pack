@@ -22,7 +22,7 @@ DIST_TEST = os.path.join(ROOT, 'dist-test')
 ZIP_TEST = os.path.join(DIST_TEST, 'lairner-pack-test.zip')
 # The core shader (kill feed anchored to the right screen edge) ships only in the test zip until Tim has
 # confirmed it on a client; then set this to True and rebuild (dist/ gets it too).
-SHADER_LIVE = False
+SHADER_LIVE = True
 SHADER_DIR = 'assets/minecraft/shaders/'
 PACK_FORMAT = 97          # 26.3 client: resource pack format 97.1
 MAX_ELEMENTS = 300
