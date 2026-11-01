@@ -20,10 +20,10 @@ Free Firearm Sound Library team.
 
 ## Generated
 
-- The voice lines (`pack/assets/lairner/sounds/df/voice/`) are synthesized with eSpeak NG
-  (https://github.com/espeak-ng/espeak-ng, GPL-3.0; the program's output is not covered by its license)
-  (announcer) and Piper (https://github.com/rhasspy/piper, MIT) with the voices en_US joe and mike (CC0) and
-  john, bryce and norman (public domain) (callouts, round start lines), by `tools/voice.py`.
+- The voice lines (`pack/assets/lairner/sounds/df/voice/`): the announcer is synthesized with eSpeak NG
+  (https://github.com/espeak-ng/espeak-ng, GPL-3.0; the program's output is not covered by its license); the
+  callouts and round start lines are generated with ElevenLabs (Eleven v3) on Tim's paid Creator plan, which
+  allows commercial use. Both by `tools/voice.py`.
 
 ## Provided by Tim
 

@@ -52,11 +52,12 @@ transform chain; real in-game look may differ slightly).
 
 Voice lines (`lairner:df.voice.*`, 2026-11-01, `tools/voice.py`). Announcer, old-school robotic TTS (eSpeak NG
 via the `espeakng_loader` wheel, deep, lo-fi: 11 kHz, telephone band, light bit crush): `planted`, `defused`,
-`ctwin` ("Counter-Terrorists win."), `twin`. Good-quality voices (Piper, five public-domain/CC0 male voices:
-joe, mike, john, bryce, norman; a different one per line): grenade callouts with 4 variants each (`he` "Fire in
-the hole!", ..., `flash` "Flashbang out!", ..., `smoke` "Smoke out!", ...) and the round start lines, 15 per
-side (`goct1`-`goct15`, `got1`-`got15`: the CS2 agents' round start lines such as "Bingo, bango, bongo; bish,
-bash, bosh." and the classics "Go, go, go!", "Lock and load!", "Move out!"). Range 16 (played at each listener)
+`ctwin` ("Counter-Terrorists win."), `twin`. Everything the players say is ElevenLabs Eleven v3 (`eleven_v3`,
+Creator plan; API output cached in `source/eleven/`, so a rebuild costs nothing): grenade callouts per side,
+6 lines each (`he_ct`, `he_t`, `flash_ct`, `flash_t`, `smoke_ct`, `smoke_t`: "Fire in the hole!", "Flashbang
+out!", "Smoke out!", ...), CT voices British/American, T voices accented (Russian, Balkan, Greek) and
+Australian; round start lines, 32 per side (`goct1`-`goct32`, `got1`-`got32`: the CS2 agents' round start
+lines such as "Bingo, bango, bongo; bish, bash, bosh." and the classics). Range 16 (played at each listener)
 / 28 (callouts, from the thrower).
 
 The gunshots are Tim's own recordings (2026-11-01; `source/tim/shots/<weapon>_<n>.flac`, one

@@ -330,68 +330,179 @@
     ],
     "subtitle": "Terrorists win"
   },
-  "df.voice.he": {
+  "df.voice.he_ct": {
     "sounds": [
       {
-        "name": "lairner:df/voice/he_1",
+        "name": "lairner:df/voice/he_ct_1",
         "attenuation_distance": 28
       },
       {
-        "name": "lairner:df/voice/he_2",
+        "name": "lairner:df/voice/he_ct_2",
         "attenuation_distance": 28
       },
       {
-        "name": "lairner:df/voice/he_3",
+        "name": "lairner:df/voice/he_ct_3",
         "attenuation_distance": 28
       },
       {
-        "name": "lairner:df/voice/he_4",
+        "name": "lairner:df/voice/he_ct_4",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_ct_5",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_ct_6",
         "attenuation_distance": 28
       }
     ],
-    "subtitle": "Fire in the hole!"
+    "subtitle": "Fire in the hole"
   },
-  "df.voice.flash": {
+  "df.voice.he_t": {
     "sounds": [
       {
-        "name": "lairner:df/voice/flash_1",
+        "name": "lairner:df/voice/he_t_1",
         "attenuation_distance": 28
       },
       {
-        "name": "lairner:df/voice/flash_2",
+        "name": "lairner:df/voice/he_t_2",
         "attenuation_distance": 28
       },
       {
-        "name": "lairner:df/voice/flash_3",
+        "name": "lairner:df/voice/he_t_3",
         "attenuation_distance": 28
       },
       {
-        "name": "lairner:df/voice/flash_4",
+        "name": "lairner:df/voice/he_t_4",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_t_5",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_t_6",
         "attenuation_distance": 28
       }
     ],
-    "subtitle": "Flashbang out!"
+    "subtitle": "Fire in the hole"
   },
-  "df.voice.smoke": {
+  "df.voice.flash_ct": {
     "sounds": [
       {
-        "name": "lairner:df/voice/smoke_1",
+        "name": "lairner:df/voice/flash_ct_1",
         "attenuation_distance": 28
       },
       {
-        "name": "lairner:df/voice/smoke_2",
+        "name": "lairner:df/voice/flash_ct_2",
         "attenuation_distance": 28
       },
       {
-        "name": "lairner:df/voice/smoke_3",
+        "name": "lairner:df/voice/flash_ct_3",
         "attenuation_distance": 28
       },
       {
-        "name": "lairner:df/voice/smoke_4",
+        "name": "lairner:df/voice/flash_ct_4",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/flash_ct_5",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/flash_ct_6",
         "attenuation_distance": 28
       }
     ],
-    "subtitle": "Smoke out!"
+    "subtitle": "Flashbang out"
+  },
+  "df.voice.flash_t": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/flash_t_1",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/flash_t_2",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/flash_t_3",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/flash_t_4",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/flash_t_5",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/flash_t_6",
+        "attenuation_distance": 28
+      }
+    ],
+    "subtitle": "Flashbang out"
+  },
+  "df.voice.smoke_ct": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/smoke_ct_1",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_ct_2",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_ct_3",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_ct_4",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_ct_5",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_ct_6",
+        "attenuation_distance": 28
+      }
+    ],
+    "subtitle": "Smoke out"
+  },
+  "df.voice.smoke_t": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/smoke_t_1",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_t_2",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_t_3",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_t_4",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_t_5",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_t_6",
+        "attenuation_distance": 28
+      }
+    ],
+    "subtitle": "Smoke out"
   },
   "df.voice.goct1": {
     "sounds": [
@@ -436,7 +547,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Be careful, let's all make it home tonight"
+    "subtitle": "Remember! This is bandit country. Shoot everything that moves"
   },
   "df.voice.goct6": {
     "sounds": [
@@ -445,7 +556,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Come on, let's get this started"
+    "subtitle": "Remember! This isn't the killing house anymore! This is real life"
   },
   "df.voice.goct7": {
     "sounds": [
@@ -454,7 +565,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Does anyone have a plan?"
+    "subtitle": "There's no stopping us"
   },
   "df.voice.goct8": {
     "sounds": [
@@ -463,7 +574,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Let's do this by the book, people"
+    "subtitle": "Let's get our heads in the game"
   },
   "df.voice.goct9": {
     "sounds": [
@@ -472,7 +583,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Let's make this quick"
+    "subtitle": "Be careful, let's all make it home tonight"
   },
   "df.voice.goct10": {
     "sounds": [
@@ -481,7 +592,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Let's get in there, and get out"
+    "subtitle": "Come on, let's get this started"
   },
   "df.voice.goct11": {
     "sounds": [
@@ -490,7 +601,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Buckle up, bad guys"
+    "subtitle": "Does anyone have a plan?"
   },
   "df.voice.goct12": {
     "sounds": [
@@ -499,7 +610,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Let's get our heads in the game"
+    "subtitle": "Valor and discipline, mon ami"
   },
   "df.voice.goct13": {
     "sounds": [
@@ -508,7 +619,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Go, go, go"
+    "subtitle": "Fortune favors the bored"
   },
   "df.voice.goct14": {
     "sounds": [
@@ -517,7 +628,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Lock and load"
+    "subtitle": "Justice comes for them"
   },
   "df.voice.goct15": {
     "sounds": [
@@ -526,7 +637,160 @@
         "attenuation_distance": 16
       }
     ],
+    "subtitle": "Today is not the day we die"
+  },
+  "df.voice.goct16": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct16",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "After we win, drinks are on me"
+  },
+  "df.voice.goct17": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct17",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let's make this quick"
+  },
+  "df.voice.goct18": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct18",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let's do this by the book, people"
+  },
+  "df.voice.goct19": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct19",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "These guys don't have a chance in hell"
+  },
+  "df.voice.goct20": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct20",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let's get in there, and get out"
+  },
+  "df.voice.goct21": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct21",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Alright, keep it together, we got this"
+  },
+  "df.voice.goct22": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct22",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "If we keep this up, we could make it back in time for waffles"
+  },
+  "df.voice.goct23": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct23",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Anyone else here for the pickle party?"
+  },
+  "df.voice.goct24": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct24",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let's wrap it up"
+  },
+  "df.voice.goct25": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct25",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "This is it, let's go"
+  },
+  "df.voice.goct26": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct26",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Buckle up, bad guys"
+  },
+  "df.voice.goct27": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct27",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Just another day in the office for us"
+  },
+  "df.voice.goct28": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct28",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Go, go, go"
+  },
+  "df.voice.goct29": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct29",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Lock and load"
+  },
+  "df.voice.goct30": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct30",
+        "attenuation_distance": 16
+      }
+    ],
     "subtitle": "Move out"
+  },
+  "df.voice.goct31": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct31",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let's move out"
+  },
+  "df.voice.goct32": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct32",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Stick together, team"
   },
   "df.voice.got1": {
     "sounds": [
@@ -544,7 +808,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Move it"
+    "subtitle": "You will cry like babies before you die"
   },
   "df.voice.got3": {
     "sounds": [
@@ -553,7 +817,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Move, my brothers"
+    "subtitle": "We will dance on your graves"
   },
   "df.voice.got4": {
     "sounds": [
@@ -562,7 +826,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Let us be safe, and swift"
+    "subtitle": "You are stupid to think you can win"
   },
   "df.voice.got5": {
     "sounds": [
@@ -571,7 +835,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Let's go, my friends"
+    "subtitle": "This is our land"
   },
   "df.voice.got6": {
     "sounds": [
@@ -580,7 +844,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Let's get this party started"
+    "subtitle": "Fear us"
   },
   "df.voice.got7": {
     "sounds": [
@@ -589,7 +853,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Let's go"
+    "subtitle": "Move it"
   },
   "df.voice.got8": {
     "sounds": [
@@ -598,7 +862,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Let's get in and out"
+    "subtitle": "Move, my brothers"
   },
   "df.voice.got9": {
     "sounds": [
@@ -607,7 +871,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Okay, here we bloody go"
+    "subtitle": "Let us be safe, and swift"
   },
   "df.voice.got10": {
     "sounds": [
@@ -616,7 +880,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Let's go ruin someone's day"
+    "subtitle": "We will make them regret this day"
   },
   "df.voice.got11": {
     "sounds": [
@@ -625,7 +889,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Who's ready to start trying?"
+    "subtitle": "Let's go, my friends"
   },
   "df.voice.got12": {
     "sounds": [
@@ -634,7 +898,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Well, I'm ready. Are you ready?"
+    "subtitle": "We will make them cry"
   },
   "df.voice.got13": {
     "sounds": [
@@ -643,7 +907,7 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Go, go, go"
+    "subtitle": "We will drive them from our lands"
   },
   "df.voice.got14": {
     "sounds": [
@@ -652,12 +916,165 @@
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Lock and load"
+    "subtitle": "Let's get this party started"
   },
   "df.voice.got15": {
     "sounds": [
       {
         "name": "lairner:df/voice/got15",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Good day to die, people"
+  },
+  "df.voice.got16": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got16",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let's go"
+  },
+  "df.voice.got17": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got17",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let's get in and out"
+  },
+  "df.voice.got18": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got18",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Look, it's simple. All we gotta do is go in there, plant the bomb, get the cash, and get out. Not so bloody hard, is it?"
+  },
+  "df.voice.got19": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got19",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Okay, here we bloody go"
+  },
+  "df.voice.got20": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got20",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let's send 'em to the sick bay, shall we?"
+  },
+  "df.voice.got21": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got21",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Have a go, you mongrel dogs"
+  },
+  "df.voice.got22": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got22",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Okay, I'm feeling a bit good about this one"
+  },
+  "df.voice.got23": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got23",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Who's ready to start trying?"
+  },
+  "df.voice.got24": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got24",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let's go ruin someone's day"
+  },
+  "df.voice.got25": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got25",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "We do the winning, they do the dying"
+  },
+  "df.voice.got26": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got26",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "We kneel for no one"
+  },
+  "df.voice.got27": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got27",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let us send them home"
+  },
+  "df.voice.got28": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got28",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "We will take everything from them"
+  },
+  "df.voice.got29": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got29",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "They want a body count. So be it"
+  },
+  "df.voice.got30": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got30",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Go, go, go"
+  },
+  "df.voice.got31": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got31",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Lock and load"
+  },
+  "df.voice.got32": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got32",
         "attenuation_distance": 16
       }
     ],
