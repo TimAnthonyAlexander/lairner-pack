@@ -6,7 +6,7 @@ Font lairner:df (assets/lairner/font/df.json):
   U+E001  hit marker       title-centered
   U+E002  headshot marker  title-centered
   U+E003  flash            title-centered, covers the screen
-  U+E004  scope overlay    title-centered, covers the screen: black with a round view and a thin cross (AWP, 2026-11-01)
+  U+E004  scope overlay    title fallback (240x120 texels, blocky): black with a round view and a thin cross (AWP). The real overlay is textures/misc/awp_scope.png (camera_overlay of the scope helmet)
   U+E010  bomb icon        action bar (normal text line)
   U+E011  kit icon
   U+E012  armor (vest) icon
@@ -258,21 +258,19 @@ def feed_sprites_and_glyphs(providers):
 
 # ------------------------------------------------------------ scope overlay
 
-SCOPE_W, SCOPE_H = 2048, 1024      # texels; displayed SCOPE_DISPLAY * 4 GUI px tall, 2:1
+SCOPE_W, SCOPE_H = 240, 120        # title-glyph fallback (scope.overlay-mode: title): a font glyph must fit the 256 px atlas page
 SCOPE_DISPLAY = 270                # provider height: 1080 GUI px tall (the whole screen at GUI scale 1 on 1080p)
 SCOPE_DIAMETER = 245               # the round view in GUI px (1080p at GUI scale 4: 91 % of the screen height)
 
 
 def scope():
-    """U+E004: opaque black everywhere except a round view with a thin black cross (a gap in the middle).
-    Texel = 4 x SCOPE_DISPLAY / SCOPE_H GUI px; the round edge is anti-aliased."""
+    """U+E004 (title fallback, small and blocky because it is scaled up 9x): opaque black everywhere except a
+    round view with a thin black cross. Texel = 4 x SCOPE_DISPLAY / SCOPE_H GUI px."""
     texel = 4.0 * SCOPE_DISPLAY / SCOPE_H
     radius = SCOPE_DIAMETER / texel / 2
     cx, cy = SCOPE_W / 2, SCOPE_H / 2
     black = (0, 0, 0, 255)
-    clear = (0, 0, 0, 0)
     img = []
-    gap = 7.0
     for y in range(SCOPE_H):
         row = []
         dy = y + 0.5 - cy
@@ -284,16 +282,47 @@ def scope():
                 continue
             a = 0.0
             if r > radius - 0.5:
-                a = r - (radius - 0.5)                       # the edge
-            # thin cross: 1 texel wide lines through the view, a gap around the middle
-            if (abs(dy) < 0.75 and abs(dx) > gap) or (abs(dx) < 0.75 and abs(dy) > gap):
+                a = r - (radius - 0.5)
+            if (abs(dy) < 0.5 and abs(dx) > 1.5) or (abs(dx) < 0.5 and abs(dy) > 1.5):
                 a = 1.0
-            if a <= 0:
-                row.append(clear)
-            else:
-                row.append((0, 0, 0, round(255 * min(1.0, a))))
+            row.append(CLEAR if a <= 0 else (0, 0, 0, round(255 * min(1.0, a))))
         img.append(row)
     img[SCOPE_H - 1][SCOPE_W - 1] = black
+    return img
+
+
+# camera overlay (equippable head item, camera_overlay lairner:misc/awp_scope): drawn stretched over the whole
+# screen like the pumpkin blur, so it is made for 16:9; other aspect ratios stretch the circle to an ellipse
+OVL_W, OVL_H = 1920, 1080
+OVL_RADIUS = 500                   # round view: 1000 of 1080 px high
+OVL_GAP = 12                       # crosshair gap around the middle, px
+OVL_LINE = 2                       # line width, px
+
+
+def scope_overlay():
+    """Opaque black outside the round view, a faint vignette inside near the rim, thin black cross with a gap.
+    Anti-aliased rim (1 px)."""
+    cx, cy = OVL_W / 2, OVL_H / 2
+    img = []
+    for y in range(OVL_H):
+        row = []
+        dy = y + 0.5 - cy
+        for x in range(OVL_W):
+            dx = x + 0.5 - cx
+            r = math.hypot(dx, dy)
+            if r >= OVL_RADIUS + 0.5:
+                row.append((0, 0, 0, 255))
+                continue
+            f = r / OVL_RADIUS
+            a = 0.0 if f < 0.8 else 0.35 * ((f - 0.8) / 0.2) ** 2          # slight dark vignette toward the rim
+            if r > OVL_RADIUS - 0.5:
+                a = max(a, r - (OVL_RADIUS - 0.5))
+            hl = abs(dy) < OVL_LINE / 2 and abs(dx) > OVL_GAP
+            vl = abs(dx) < OVL_LINE / 2 and abs(dy) > OVL_GAP
+            if hl or vl:
+                a = 1.0
+            row.append((0, 0, 0, round(255 * min(1.0, a))))
+        img.append(row)
     return img
 
 
@@ -335,6 +364,12 @@ def main():
     save(os.path.join(tex, 'headshot.png'), hitmarker(4, 15.9, 3.2))
     save(os.path.join(tex, 'flash.png'), flash())
     save(os.path.join(tex, 'scope.png'), scope())
+    save(os.path.join(LA, 'textures', 'misc', 'awp_scope.png'), scope_overlay())
+    # invisible item model for the scope helmet: nothing is drawn on the head in third person
+    ip = os.path.join(LA, 'items', 'df', 'scope_helmet.json')
+    with open(ip, 'w') as f:
+        json.dump({'model': {'type': 'minecraft:empty'}}, f, indent=2)
+        f.write('\n')
     for name, img in icons().items():
         save(os.path.join(tex, 'icon_' + name + '.png'), img)
 

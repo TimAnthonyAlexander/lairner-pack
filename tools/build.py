@@ -69,6 +69,8 @@ def validate():
         item = load(os.path.join(idir, fn))
         if not item:
             continue
+        if item['model'].get('type') == 'minecraft:empty':
+            continue
         mref = item['model']['model']
         mpath = asset_path(mref, 'models', '.json')
         if not os.path.exists(mpath):
@@ -172,6 +174,11 @@ def main():
     if errors:
         print('\n'.join('ERROR ' + e for e in errors))
         sys.exit(1)
+    if '--test' in sys.argv:        # only dist-test/ (for /df pack test); dist/ stays as it is
+        sha1, size, n = build_zip(ZIP_TEST, True)
+        print('dist-test/lairner-pack-test.zip  %d files  %.1f KB' % (n, size / 1024))
+        print('SHA-1 %s' % sha1)
+        return
     sha1, size, n = build_zip(ZIP, SHADER_LIVE)
     print('dist/lairner-pack.zip  %d files  %.1f KB  (shader: %s)' % (n, size / 1024, SHADER_LIVE))
     print('SHA-1 %s' % sha1)
