@@ -383,6 +383,69 @@ def ak_spec():
     return centered(s)
 
 
+MATTE = (42, 44, 51)
+MATTE_EDGE = (80, 83, 95)
+
+
+def m4s_spec():
+    """M4A1-S along -Z (z 0 = muzzle), all black and slim (narrower than the AK): a long round suppressor with end
+    caps, a short bit of barrel, the A-frame front sight, a slim handguard with a top rail, a flat-top upper with a
+    rail, the rear sight and the charging handle, forward assist and ejection port on the right, the lower with the
+    magwell, a straight STANAG magazine with a slight forward curve, pistol grip, buffer tube and a collapsible stock."""
+    s = []
+    # suppressor: long, round-ish (two crossed boxes), end caps, bore
+    s.append(([7.45, 8.4, 0.4], [8.55, 9.4, 7.2], MATTE))
+    s.append(([7.55, 8.3, 0.4], [8.45, 9.5, 7.2], MATTE))
+    s.append(([7.4, 8.35, 0], [8.6, 9.45, 0.4], BLACK_STEEL))
+    s.append(([7.4, 8.35, 7.2], [8.6, 9.45, 7.6], BLACK_STEEL))
+    s.append(([7.75, 8.65, -0.05], [8.25, 9.15, 0.05], (20, 20, 24)))
+    for z in (2.2, 4.4):
+        s.append(([7.42, 8.38, z], [8.58, 9.42, z + 0.25], MATTE_EDGE))
+    # barrel between the suppressor and the front sight
+    s.append(([7.75, 8.65, 7.6], [8.25, 9.15, 8.6], BLACK_STEEL))
+    # A-frame front sight: base on the barrel, post narrowing upward
+    s.append(([7.6, 8.5, 8.6], [8.4, 9.7, 9.6], GRIP_DARK))
+    s.append(([7.7, 9.7, 8.75], [8.3, 10.5, 9.45], GRIP_DARK))
+    s.append(([7.85, 10.5, 8.9], [8.15, 11.3, 9.3], GRIP_DARK))
+    # slim handguard with vent lines and a top rail
+    s.append(([7.4, 8.0, 9.6], [8.6, 9.9, 16.0], MATTE))
+    for z in (10.4, 11.6, 12.8, 14.0):
+        s.append(([7.35, 8.4, z], [8.65, 9.5, z + 0.5], BLACK_STEEL))
+    s.append(([7.7, 9.9, 9.8], [8.3, 10.2, 15.8], BLACK_STEEL))
+    s.append(([7.5, 7.9, 15.6], [8.5, 10.0, 16.2], MATTE_EDGE))        # delta ring
+    # flat-top upper receiver with rail notches, rear sight, charging handle
+    s.append(([7.45, 8.3, 16.0], [8.55, 10.0, 22.2], BLACK_STEEL))
+    s.append(([7.7, 10.0, 16.0], [8.3, 10.3, 22.2], MATTE))
+    for z in (16.6, 17.6, 18.6, 19.6):
+        s.append(([7.65, 10.3, z], [8.35, 10.45, z + 0.4], MATTE))
+    s.append(([7.6, 10.3, 20.8], [8.4, 11.0, 21.8], GRIP_DARK))        # rear sight
+    s.append(([7.7, 9.6, 22.2], [8.3, 10.0, 22.8], MATTE_EDGE))        # charging handle
+    s.append(([8.55, 8.7, 17.6], [8.62, 9.6, 19.6], (20, 20, 24)))      # ejection port (right)
+    s.append(([8.55, 9.2, 20.4], [8.85, 9.7, 21.0], MATTE_EDGE))       # forward assist
+    # lower receiver and magwell
+    s.append(([7.5, 7.0, 16.4], [8.5, 8.3, 22.6], MATTE))
+    s.append(([7.5, 6.3, 16.7], [8.5, 7.0, 18.7], MATTE))
+    # STANAG magazine, slight forward curve
+    for i, (y0, y1, dz) in enumerate(((5.0, 6.3, 0.0), (3.8, 5.0, -0.25), (2.6, 3.8, -0.55))):
+        s.append(([7.6, y0, 16.85 + dz], [8.4, y1, 18.55 + dz], BLACK_STEEL if i % 2 == 0 else MATTE))
+    s.append(([7.55, 2.3, 16.2], [8.45, 2.6, 18.1], GRIP_DARK))        # base plate
+    # trigger guard, trigger, pistol grip angled back
+    s.append(([7.6, 6.2, 18.8], [8.4, 6.5, 20.6], MATTE))
+    s.append(([7.6, 6.2, 18.8], [8.4, 7.0, 19.1], MATTE))
+    s.append(([7.88, 6.6, 19.6], [8.12, 7.0, 19.9], MATTE_EDGE))
+    for i in range(3):
+        y1 = 7.0 - i * 1.3
+        z0 = 20.6 + i * 0.55
+        s.append(([7.5, y1 - 1.3, z0], [8.5, y1, z0 + 1.9], GRIP_DARK))
+    # buffer tube and collapsible stock
+    s.append(([7.65, 8.2, 22.6], [8.35, 9.0, 25.6], BLACK_STEEL))
+    s.append(([7.5, 8.0, 24.4], [8.5, 9.5, 27.6], MATTE))
+    s.append(([7.55, 6.6, 25.8], [8.45, 8.0, 27.6], MATTE))
+    s.append(([7.6, 5.8, 26.8], [8.4, 6.6, 27.6], MATTE))
+    s.append(([7.45, 5.7, 27.6], [8.55, 9.6, 28.2], GRIP_DARK))        # butt pad
+    return centered(s)
+
+
 def bomb_spec():
     """C4-style charge: three tan bricks, tape, a keypad with a screen, wires."""
     s = []
@@ -445,7 +508,6 @@ def build(pal):
     gun('usp', 'blaster-a', 16, 52, PISTOL_DISPLAY, silencer='silencer-small')
     gun('mac10', 'blaster-c', 15, 60, SMG_DISPLAY)
     gun('mp9', 'blaster-i', 16, 60, SMG_DISPLAY, turn=True)
-    gun('m4s', 'blaster-d', 28, 48, RIFLE_DISPLAY, silencer='silencer-larger')
 
     nade_display = compact_display(fp_scale=0.55, fp_t=[0, 6.0, 0], tp_scale=0.5, tp_t=[0, 1.5, 1.0], gui_scale=1.05)
     flash_col = hue_shift((236, 236, 240))
@@ -475,6 +537,8 @@ def build(pal):
                         'src': 'lairner'}
     models['ak'] = {'elements': boxes_model(ak_spec(), pal), 'display': gun_display(**RIFLE_DISPLAY),
                     'src': 'lairner'}
+    models['m4s'] = {'elements': boxes_model(m4s_spec(), pal), 'display': gun_display(**RIFLE_DISPLAY),
+                     'src': 'lairner'}
     models['bomb'] = {'elements': boxes_model(bomb_spec(), pal),
                       'display': compact_display(fp_scale=0.55, fp_t=[0, 5.0, -1.0], tp_scale=0.5,
                                                  tp_t=[0, 1.6, 1.2], gui_scale=0.95, ground_scale=0.4), 'src': 'lairner'}

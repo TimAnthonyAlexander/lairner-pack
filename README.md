@@ -24,7 +24,7 @@ Set `item_model` on any base item, e.g. `minecraft:item_model="lairner:df/ak"`.
 | `lairner:df/mac10` | M10 | Kenney blaster-c |
 | `lairner:df/mp9` | MP9 | Kenney blaster-i |
 | `lairner:df/ak` | AK | own |
-| `lairner:df/m4s` | M4-S | Kenney blaster-d + silencer-larger |
+| `lairner:df/m4s` | M4-S | own: black M4A1-S, slim handguard, long suppressor, flat-top rail, collapsible stock (2026-11-01) |
 | `lairner:df/knife` | Knife | own |
 | `lairner:df/bomb` | Bomb (C4) | own |
 | `lairner:df/kit` | Defuse kit | own |
