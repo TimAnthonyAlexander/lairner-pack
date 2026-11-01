@@ -78,6 +78,14 @@ MP9 4, AK 1, M4-S 1. `python3 tools/sounds.py --tim-shots` rebuilds just them (n
 | `lairner:df.he.explode` | 96 |
 | `lairner:df.smoke.pop` (pop + 3.5 s hiss) | 32 |
 
+Spawn music (2026-11-01, `tools/music.py`, table `config/defusal/music.json` in the server repo): `lairner:df.music.<map>_<t|ct>`,
+32 events, each plays one of the client's own music discs (`minecraft:records/<name>`, not shipped here) with
+`stream` and a 20 block range. Discs because they are mono: the client fades mono sounds with distance, the stereo
+`music/game` tracks it plays at one volume everywhere. The game plays them in the `records` category (the
+Jukebox/Note Blocks slider). `assets/minecraft/sounds.json` also empties the biome background music events
+(`music.game`, `music.overworld.*`, `music.nether.*`, ...), so the client's random game music never plays over
+them (the pack is only active on the defusal server).
+
 Shots have 2-3 variants picked at random. Range is the
 `attenuation_distance`: the client fades linearly to silence at
 `attenuation_distance * max(volume, 1)`. Play them with volume 1 (lower for

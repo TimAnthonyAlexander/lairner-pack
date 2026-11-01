@@ -241,6 +241,294 @@
     ],
     "subtitle": "Gunshot"
   },
+  "df.music.canal_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/cat",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.canal_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/strad",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.cape_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/wait",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.cape_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/far",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.cinder_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/stal",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.cinder_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/pigstep",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.depot_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/blocks",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.depot_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/13",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.foundry_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/13",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.foundry_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/precipice",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.glacier_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/far",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.glacier_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/stal",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.gulch_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/strad",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.gulch_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/wait",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.harbor_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/far",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.harbor_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/wait",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.jungle_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/otherside",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.jungle_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/blocks",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.monastery_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/mellohi",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.monastery_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/ward",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.orchard_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/chirp",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.orchard_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/mall",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.outpost_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/cat",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.outpost_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/relic",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.quarry_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/strad",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.quarry_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/chirp",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.reef_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/otherside",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.reef_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/relic",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.shrine_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/creator_music_box",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.shrine_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/creator",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.station_ct": {
+    "sounds": [
+      {
+        "name": "minecraft:records/mall",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
+  "df.music.station_t": {
+    "sounds": [
+      {
+        "name": "minecraft:records/tears",
+        "stream": true,
+        "attenuation_distance": 20
+      }
+    ]
+  },
   "df.reload.pistol": {
     "sounds": [
       {
@@ -294,24 +582,6 @@
     ],
     "subtitle": "Silenced shot"
   },
-  "df.voice.planted": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/planted",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "The bomb has been planted"
-  },
-  "df.voice.defused": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/defused",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "The bomb has been defused"
-  },
   "df.voice.ctwin": {
     "sounds": [
       {
@@ -321,72 +591,14 @@
     ],
     "subtitle": "Counter-Terrorists win"
   },
-  "df.voice.twin": {
+  "df.voice.defused": {
     "sounds": [
       {
-        "name": "lairner:df/voice/twin",
+        "name": "lairner:df/voice/defused",
         "attenuation_distance": 16
       }
     ],
-    "subtitle": "Terrorists win"
-  },
-  "df.voice.he_ct": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/he_ct_1",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/he_ct_2",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/he_ct_3",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/he_ct_4",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/he_ct_5",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/he_ct_6",
-        "attenuation_distance": 28
-      }
-    ],
-    "subtitle": "Fire in the hole"
-  },
-  "df.voice.he_t": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/he_t_1",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/he_t_2",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/he_t_3",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/he_t_4",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/he_t_5",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/he_t_6",
-        "attenuation_distance": 28
-      }
-    ],
-    "subtitle": "Fire in the hole"
+    "subtitle": "The bomb has been defused"
   },
   "df.voice.flash_ct": {
     "sounds": [
@@ -446,64 +658,6 @@
     ],
     "subtitle": "Flashbang out"
   },
-  "df.voice.smoke_ct": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/smoke_ct_1",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/smoke_ct_2",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/smoke_ct_3",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/smoke_ct_4",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/smoke_ct_5",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/smoke_ct_6",
-        "attenuation_distance": 28
-      }
-    ],
-    "subtitle": "Smoke out"
-  },
-  "df.voice.smoke_t": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/smoke_t_1",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/smoke_t_2",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/smoke_t_3",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/smoke_t_4",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/smoke_t_5",
-        "attenuation_distance": 28
-      },
-      {
-        "name": "lairner:df/voice/smoke_t_6",
-        "attenuation_distance": 28
-      }
-    ],
-    "subtitle": "Smoke out"
-  },
   "df.voice.goct1": {
     "sounds": [
       {
@@ -512,78 +666,6 @@
       }
     ],
     "subtitle": "Bingo, bango, bongo; bish, bash, bosh"
-  },
-  "df.voice.goct2": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/goct2",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "Let's make this right as rain"
-  },
-  "df.voice.goct3": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/goct3",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "Are we rushing in? Or are we going sneaky-beaky like?"
-  },
-  "df.voice.goct4": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/goct4",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "Remove any doubts in your head. It's us, or them"
-  },
-  "df.voice.goct5": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/goct5",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "Remember! This is bandit country. Shoot everything that moves"
-  },
-  "df.voice.goct6": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/goct6",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "Remember! This isn't the killing house anymore! This is real life"
-  },
-  "df.voice.goct7": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/goct7",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "There's no stopping us"
-  },
-  "df.voice.goct8": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/goct8",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "Let's get our heads in the game"
-  },
-  "df.voice.goct9": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/goct9",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "Be careful, let's all make it home tonight"
   },
   "df.voice.goct10": {
     "sounds": [
@@ -675,6 +757,15 @@
     ],
     "subtitle": "These guys don't have a chance in hell"
   },
+  "df.voice.goct2": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct2",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let's make this right as rain"
+  },
   "df.voice.goct20": {
     "sounds": [
       {
@@ -765,6 +856,15 @@
     ],
     "subtitle": "Lock and load"
   },
+  "df.voice.goct3": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct3",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Are we rushing in? Or are we going sneaky-beaky like?"
+  },
   "df.voice.goct30": {
     "sounds": [
       {
@@ -792,6 +892,60 @@
     ],
     "subtitle": "Stick together, team"
   },
+  "df.voice.goct4": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct4",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Remove any doubts in your head. It's us, or them"
+  },
+  "df.voice.goct5": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct5",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Remember! This is bandit country. Shoot everything that moves"
+  },
+  "df.voice.goct6": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct6",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Remember! This isn't the killing house anymore! This is real life"
+  },
+  "df.voice.goct7": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct7",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "There's no stopping us"
+  },
+  "df.voice.goct8": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct8",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let's get our heads in the game"
+  },
+  "df.voice.goct9": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/goct9",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Be careful, let's all make it home tonight"
+  },
   "df.voice.got1": {
     "sounds": [
       {
@@ -800,78 +954,6 @@
       }
     ],
     "subtitle": "This is where we get our revenge"
-  },
-  "df.voice.got2": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/got2",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "You will cry like babies before you die"
-  },
-  "df.voice.got3": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/got3",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "We will dance on your graves"
-  },
-  "df.voice.got4": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/got4",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "You are stupid to think you can win"
-  },
-  "df.voice.got5": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/got5",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "This is our land"
-  },
-  "df.voice.got6": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/got6",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "Fear us"
-  },
-  "df.voice.got7": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/got7",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "Move it"
-  },
-  "df.voice.got8": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/got8",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "Move, my brothers"
-  },
-  "df.voice.got9": {
-    "sounds": [
-      {
-        "name": "lairner:df/voice/got9",
-        "attenuation_distance": 16
-      }
-    ],
-    "subtitle": "Let us be safe, and swift"
   },
   "df.voice.got10": {
     "sounds": [
@@ -963,6 +1045,15 @@
     ],
     "subtitle": "Okay, here we bloody go"
   },
+  "df.voice.got2": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got2",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "You will cry like babies before you die"
+  },
   "df.voice.got20": {
     "sounds": [
       {
@@ -1053,6 +1144,15 @@
     ],
     "subtitle": "They want a body count. So be it"
   },
+  "df.voice.got3": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got3",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "We will dance on your graves"
+  },
   "df.voice.got30": {
     "sounds": [
       {
@@ -1079,5 +1179,193 @@
       }
     ],
     "subtitle": "Move out"
+  },
+  "df.voice.got4": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got4",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "You are stupid to think you can win"
+  },
+  "df.voice.got5": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got5",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "This is our land"
+  },
+  "df.voice.got6": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got6",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Fear us"
+  },
+  "df.voice.got7": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got7",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Move it"
+  },
+  "df.voice.got8": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got8",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Move, my brothers"
+  },
+  "df.voice.got9": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/got9",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Let us be safe, and swift"
+  },
+  "df.voice.he_ct": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/he_ct_1",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_ct_2",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_ct_3",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_ct_4",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_ct_5",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_ct_6",
+        "attenuation_distance": 28
+      }
+    ],
+    "subtitle": "Fire in the hole"
+  },
+  "df.voice.he_t": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/he_t_1",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_t_2",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_t_3",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_t_4",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_t_5",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/he_t_6",
+        "attenuation_distance": 28
+      }
+    ],
+    "subtitle": "Fire in the hole"
+  },
+  "df.voice.planted": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/planted",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "The bomb has been planted"
+  },
+  "df.voice.smoke_ct": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/smoke_ct_1",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_ct_2",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_ct_3",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_ct_4",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_ct_5",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_ct_6",
+        "attenuation_distance": 28
+      }
+    ],
+    "subtitle": "Smoke out"
+  },
+  "df.voice.smoke_t": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/smoke_t_1",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_t_2",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_t_3",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_t_4",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_t_5",
+        "attenuation_distance": 28
+      },
+      {
+        "name": "lairner:df/voice/smoke_t_6",
+        "attenuation_distance": 28
+      }
+    ],
+    "subtitle": "Smoke out"
+  },
+  "df.voice.twin": {
+    "sounds": [
+      {
+        "name": "lairner:df/voice/twin",
+        "attenuation_distance": 16
+      }
+    ],
+    "subtitle": "Terrorists win"
   }
 }

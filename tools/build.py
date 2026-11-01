@@ -117,6 +117,8 @@ def validate():
     for ev, entry in sounds.items():
         for s in entry['sounds']:
             name = s['name'] if isinstance(s, dict) else s
+            if name.startswith('minecraft:records/'):      # spawn music: the client's own discs (tools/music.py)
+                continue
             path = asset_path(name, 'sounds', '.ogg')
             used.add(os.path.normpath(path))
             if not os.path.exists(path):
