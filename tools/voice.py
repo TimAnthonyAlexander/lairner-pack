@@ -3,11 +3,17 @@ sounds.json entries.
 
 Engine: eSpeak NG (GPL-3.0) through the `espeakng_loader` wheel (bundles libespeak-ng and its data; nothing
 installed system-wide):  python3 -m venv /tmp/v && /tmp/v/bin/pip install espeakng_loader
-Usage: /tmp/v/bin/python tools/voice.py
+Piper (MIT, neural, local) for the "good" voices: pip install piper-tts into the same venv, and the voice models
+from huggingface.co/rhasspy/piper-voices into a folder (only public-domain/CC0 voices: en_US joe, mike (CC0),
+john, bryce, norman (public domain); ryan and hfc_male are non-commercial, not used).
+Usage: /tmp/v/bin/python tools/voice.py --piper <folder with en_US-*-medium.onnx>
 
 Style (Tim, 2026-11-01): old-school, low quality, deep male voice, not modern TTS. eSpeak's formant voice,
 pitched low, then made lo-fi: 11 kHz, telephone band (150-3200 Hz), a light bit crush, peak -1 dB, mono OGG.
+That's the announcer (bomb planted/defused, round winners). The grenade callouts and the round start lines are
+the "good" voices (Tim, 2026-11-01): Piper, one of five male voices per line, clean (80 Hz high-pass, peak -1 dB).
 """
+import argparse
 import ctypes
 import json
 import os
@@ -25,16 +31,32 @@ OUT = os.path.join(LA, 'sounds', 'df', 'voice')
 ANNOUNCER = ('en-us+m3', 135, 12, 12)
 CALLERS = [('en-us+m1', 175, 22, 40), ('en-us+m3', 170, 16, 35), ('en-us+m7', 180, 26, 45)]
 
-# event -> (lines, who speaks, attenuation distance, subtitle)
+PIPER_VOICES = ['en_US-joe-medium', 'en_US-mike-medium', 'en_US-john-medium', 'en_US-bryce-medium', 'en_US-norman-medium']
+# round start, per side (Tim, 2026-11-01: the CS2 agents' round start lines, plus the classics); our own voices
+GO_CT = ['Bingo, bango, bongo; bish, bash, bosh.', "Let's make this right as rain.",
+         'Are we rushing in? Or are we going sneaky-beaky like?', "Remove any doubts in your head. It's us, or them.",
+         "Be careful, let's all make it home tonight.", "Come on, let's get this started.", 'Does anyone have a plan?',
+         "Let's do this by the book, people.", "Let's make this quick.", "Let's get in there, and get out.",
+         'Buckle up, bad guys!', "Let's get our heads in the game!", 'Go, go, go!', 'Lock and load!', 'Move out!']
+GO_T = ['This is where we get our revenge.', 'Move it!', 'Move, my brothers!', 'Let us be safe, and swift.',
+        "Let's go, my friends.", "Let's get this party started.", "Let's go!", "Let's get in and out.",
+        'Okay, here we bloody go!', "Let's go ruin someone's day.", "Who's ready to start trying?",
+        "Well, I'm ready. Are you ready?", 'Go, go, go!', 'Lock and load!', 'Move out!']
+
+# event -> (lines, who speaks, attenuation distance, subtitle); who: announcer (eSpeak), caller (Piper)
 EVENTS = {
     'df.voice.planted': (['The bomb has been planted.'], 'announcer', 16, 'The bomb has been planted'),
     'df.voice.defused': (['The bomb has been defused.'], 'announcer', 16, 'The bomb has been defused'),
     'df.voice.ctwin': (['Counter-Terrorists win.'], 'announcer', 16, 'Counter-Terrorists win'),
     'df.voice.twin': (['Terrorists win.'], 'announcer', 16, 'Terrorists win'),
-    'df.voice.he': (['Fire in the hole!', 'Grenade out!', 'Frag out!', 'H E going in!'], 'caller', 28, 'Fire in the hole!'),
+    'df.voice.he': (['Fire in the hole!', 'Grenade out!', 'Frag out!', 'H.E. going in!'], 'caller', 28, 'Fire in the hole!'),
     'df.voice.flash': (['Flashbang out!', 'Flash out!', 'Flashing!', 'Flash going in!'], 'caller', 28, 'Flashbang out!'),
     'df.voice.smoke': (['Smoke out!', 'Throwing smoke!', 'Smoke going in!', "Smoke's out!"], 'caller', 28, 'Smoke out!'),
 }
+# round start: one event per line (Skript picks one per side: df.voice.goct<n>, df.voice.got<n>)
+for _side, _lines in (('ct', GO_CT), ('t', GO_T)):
+    for _i, _line in enumerate(_lines):
+        EVENTS['df.voice.go%s%d' % (_side, _i + 1)] = ([_line], 'caller', 16, _line.rstrip('!.'))
 
 LOFI = ('aresample=11025,highpass=f=150,lowpass=f=3200,'
         'acrusher=level_in=1:level_out=1:bits=9:mode=log:aa=1:mix=0.35,aresample=44100')
@@ -78,6 +100,12 @@ def speak(text, voice, wav_path):
         w.writeframes(b''.join(_samples))
 
 
+def piper(text, voice, wav_path, folder, length=0.9):
+    subprocess.run([os.path.join(os.path.dirname(__import__('sys').executable), 'piper'),
+                    '-m', os.path.join(folder, voice + '.onnx'), '-f', wav_path, '--length-scale', str(length)],
+                   input=text.encode(), check=True, capture_output=True)
+
+
 def ff(args):
     subprocess.run(['ffmpeg', '-v', 'error', '-y'] + args, check=True)
 
@@ -92,7 +120,11 @@ def peak_db(path):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--piper', required=True, help='folder with the Piper voice models')
+    a = ap.parse_args()
     os.makedirs(OUT, exist_ok=True)
+    caller_n = 0
     for f in os.listdir(OUT):
         os.remove(os.path.join(OUT, f))
     path = os.path.join(LA, 'sounds.json')
@@ -101,15 +133,22 @@ def main():
     for ev, (lines, who, att, sub) in EVENTS.items():
         names = []
         for i, line in enumerate(lines):
-            voice = ANNOUNCER if who == 'announcer' else CALLERS[i % len(CALLERS)]
             base = ev[len('df.voice.'):] + ('_%d' % (i + 1) if len(lines) > 1 else '')
             dst = os.path.join(OUT, base + '.ogg')
             with tempfile.TemporaryDirectory() as td:
                 raw, lo = os.path.join(td, 'raw.wav'), os.path.join(td, 'lo.wav')
-                speak(line, voice, raw)
-                # trim the synthesizer's leading/trailing silence, then the lo-fi chain
-                ff(['-i', raw, '-af', 'silenceremove=start_periods=1:start_threshold=-50dB,areverse,'
-                    'silenceremove=start_periods=1:start_threshold=-50dB,areverse,' + LOFI, '-ac', '1', lo])
+                trim = ('silenceremove=start_periods=1:start_threshold=-50dB,areverse,'
+                        'silenceremove=start_periods=1:start_threshold=-50dB,areverse,')
+                if who == 'announcer':
+                    speak(line, ANNOUNCER, raw)
+                    chain = trim + LOFI          # the old-school lo-fi chain
+                else:
+                    # the next of the five voices, so neighbouring lines differ
+                    piper(line, PIPER_VOICES[caller_n % len(PIPER_VOICES)], raw, a.piper,
+                          0.85 if not ev.startswith('df.voice.go') else 0.95)
+                    caller_n += 1
+                    chain = trim + 'highpass=f=80,aresample=44100'
+                ff(['-i', raw, '-af', chain, '-ac', '1', lo])
                 gain = -1.0 - peak_db(lo)
                 ff(['-i', lo, '-af', 'volume=%.2fdB' % gain, '-ac', '1', '-c:a', 'libvorbis', '-q:a', '3', dst])
             names.append('lairner:df/voice/' + base)
