@@ -299,6 +299,50 @@ def deagle_spec():
     return centered(s)
 
 
+POLYMER = (50, 50, 58)
+POLYMER_LIGHT = (72, 72, 82)
+GUNMETAL = (104, 108, 120)
+
+
+def glock_spec():
+    """Compact polymer pistol along -Z (z 0 = muzzle), smaller than the D-Eagle: a boxy flat-topped slide with
+    rear serrations, square sights, no hammer (striker), a squared trigger guard with the finger rest, a short rail
+    under the dust cover and a straight grip at the steep Glock angle with the flared magazine base."""
+    s = []
+    # slide: blocky, flat top, slightly narrower than the frame at the bottom edge
+    s.append(([7.2, 8.6, 0], [8.8, 10.4, 9.8], GUNMETAL))
+    s.append(([7.15, 8.9, 7.6], [8.85, 10.2, 9.6], STEEL_DARK))         # rear serration band
+    for z in (7.9, 8.5, 9.1):
+        s.append(([7.1, 9.0, z], [8.9, 10.1, z + 0.25], GRIP_DARK))
+    s.append(([8.85, 9.4, 4.4], [8.9, 10.2, 6.0], BLACK_STEEL))         # ejection port (right side)
+    # barrel bore and sights
+    s.append(([7.55, 9.0, -0.05], [8.45, 9.9, 0.05], GRIP_DARK))
+    s.append(([7.8, 10.4, 0.5], [8.2, 10.9, 1.1], EDGE))                # front dot
+    s.append(([7.35, 10.4, 9.0], [7.8, 10.95, 9.7], GRIP_DARK))         # rear notch
+    s.append(([8.2, 10.4, 9.0], [8.65, 10.95, 9.7], GRIP_DARK))
+    s.append(([7.75, 10.4, 9.0], [8.25, 10.55, 9.7], EDGE))
+    # frame: dust cover with a short rail, under the slide to the back
+    s.append(([7.25, 7.7, 0.6], [8.75, 8.6, 10.0], POLYMER))
+    for z in (1.0, 1.8, 2.6):
+        s.append(([7.2, 7.4, z], [8.8, 7.7, z + 0.45], POLYMER_LIGHT))
+    # squared trigger guard with the finger rest, trigger
+    s.append(([7.35, 6.0, 3.6], [8.65, 7.7, 4.2], POLYMER))
+    s.append(([7.35, 6.0, 3.6], [8.65, 6.5, 6.6], POLYMER))
+    s.append(([7.85, 6.5, 5.0], [8.15, 7.7, 5.5], GRIP_DARK))
+    # grip: straight, steep (about 22 degrees), textured panel, flared mag base
+    for i in range(4):
+        y1 = 7.7 - i * 1.25
+        zs = 6.4 + i * 0.45
+        s.append(([7.25, y1 - 1.25, zs], [8.75, y1, zs + 3.4], POLYMER))
+    for i in range(3):
+        y1 = 7.1 - i * 1.25
+        zs = 6.9 + i * 0.45
+        s.append(([7.2, y1 - 0.9, zs], [8.8, y1 - 0.3, zs + 2.4], POLYMER_LIGHT))
+    s.append(([7.15, 2.3, 7.6], [8.85, 2.75, 11.4], GRIP_DARK))         # magazine base plate
+    s.append(([7.3, 7.7, 9.9], [8.7, 8.6, 10.6], POLYMER))              # beavertail
+    return centered(s)
+
+
 def ak_spec():
     """AK along -Z (z 0 = muzzle): wooden fixed stock and lower handguard, black receiver with dust cover, gas tube
     above a long thin barrel with a front sight post, pistol grip, forward-curved banana magazine."""
@@ -398,7 +442,6 @@ def build(pal):
         els, dims = voxel_model(meshes, per_unit, length, pal, qdist=qdist)
         models[mid] = {'elements': els, 'display': gun_display(**display), 'src': obj}
 
-    gun('glock', 'blaster-k', 13, 64, PISTOL_DISPLAY, turn=True)
     gun('usp', 'blaster-a', 16, 52, PISTOL_DISPLAY, silencer='silencer-small')
     gun('mac10', 'blaster-c', 15, 60, SMG_DISPLAY)
     gun('mp9', 'blaster-i', 16, 60, SMG_DISPLAY, turn=True)
@@ -426,6 +469,8 @@ def build(pal):
     models['knife'] = {'elements': boxes_model(knife_spec(), pal),
                        'display': gun_display(fp_scale=0.75, fp_t=[-0.6, 1.6, -1.4], tp_scale=0.7,
                                               tp_t=[0, 0.8, 1.6], gui_scale=0.85), 'src': 'lairner'}
+    models['glock'] = {'elements': boxes_model(glock_spec(), pal), 'display': gun_display(**PISTOL_DISPLAY),
+                       'src': 'lairner'}
     models['deagle'] = {'elements': boxes_model(deagle_spec(), pal), 'display': gun_display(**PISTOL_DISPLAY),
                         'src': 'lairner'}
     models['ak'] = {'elements': boxes_model(ak_spec(), pal), 'display': gun_display(**RIFLE_DISPLAY),
