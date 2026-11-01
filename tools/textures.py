@@ -10,6 +10,10 @@ Font lairner:df (assets/lairner/font/df.json):
   U+E011  kit icon
   U+E012  armor (vest) icon
   U+E013  helmet icon
+  U+E020..E026  kill feed box pieces, plain, 1,2,4,...,64 px wide, 11 px tall
+  U+E030..E036  the same with a red top and bottom border (your own entries)
+  U+E037/E038   red border left / right cap (2 px wide)
+  U+E040 headshot icon, U+E041 wall icon, U+E042 skull (suicide / world)
   U+F801..U+F808  negative space -1, -2, -4, ... -128
   U+F811..U+F818  positive space +1, +2, +4, ... +128
 
@@ -190,6 +194,67 @@ def icons():
         'helmet': icon_from(HELMET, {'h': (110, 140, 190, 255), 'H': (78, 100, 140, 255), 'k': DARK}),
     }
 
+# ------------------------------------------------------------ kill feed
+
+FEED_H = 11
+FEED_FILL = (0, 0, 0, 150)
+FEED_FILL_OWN = (50, 0, 0, 170)
+FEED_RED = (230, 40, 40, 255)
+
+
+def feed_piece(w, own, cap=None):
+    img = [[FEED_FILL_OWN if own else FEED_FILL] * w for _ in range(FEED_H)]
+    if own:
+        for x in range(w):
+            img[0][x] = FEED_RED
+            img[FEED_H - 1][x] = FEED_RED
+        if cap == 'l':
+            for y in range(FEED_H):
+                img[y][0] = FEED_RED
+        if cap == 'r':
+            for y in range(FEED_H):
+                img[y][w - 1] = FEED_RED
+    return img
+
+
+def feed_icon(rows, colors):
+    img = blank(8, 8)
+    for y, row in enumerate(rows):
+        for x, ch in enumerate(row):
+            if ch != '.':
+                img[y][x] = colors[ch]
+    return img
+
+
+SKULL = ['..####..', '.######.', '##.##.##', '##.##.##', '.######.', '..####..', '..#.#.#.', '..####.#']
+HEAD = ['..####..', '.#....#.', '#......#', '#..rr..#', '#..rr..#', '#......#', '.#....#.', '..####.#']
+WALL = ['###.####', '###.####', '........', '####.###', '####.###', '........', '###.####', '###.####']
+
+
+def feed_sprites_and_glyphs(providers):
+    tex = os.path.join(LA, 'textures', 'font', 'df')
+    for i in range(7):
+        w = 1 << i
+        for own, base, name in ((False, 0xE020, 'feed_%d'), (True, 0xE030, 'feedb_%d')):
+            save(os.path.join(tex, name % w + '.png'), feed_piece(w, own))
+            providers.append({'type': 'bitmap', 'file': 'lairner:font/df/%s.png' % (name % w),
+                              'height': FEED_H, 'ascent': 9, 'chars': [chr(base + i)]})
+    for ch, cap, name in ((0xE037, 'l', 'feedb_l'), (0xE038, 'r', 'feedb_r')):
+        save(os.path.join(tex, name + '.png'), feed_piece(2, True, cap))
+        providers.append({'type': 'bitmap', 'file': 'lairner:font/df/%s.png' % name,
+                          'height': FEED_H, 'ascent': 9, 'chars': [chr(ch)]})
+    white = (236, 238, 244, 255)
+    icons_ = (('feed_hs', 0xE040, HEAD), ('feed_wall', 0xE041, WALL), ('feed_skull', 0xE042, SKULL))
+    for name, ch, rows in icons_:
+        save(os.path.join(tex, name + '.png'), feed_icon(rows, {'#': white, 'r': FEED_RED}))
+        providers.append({'type': 'bitmap', 'file': 'lairner:font/df/%s.png' % name,
+                          'height': 8, 'ascent': 7, 'chars': [chr(ch)]})
+    # the feed's boss bars (purple) are invisible: only their names show
+    bb = os.path.join(MC, 'textures', 'gui', 'sprites', 'boss_bar')
+    for n in ('purple_background', 'purple_progress'):
+        save(os.path.join(bb, n + '.png'), blank(182, 5))
+
+
 # ------------------------------------------------------------ vanilla overrides
 
 
@@ -239,6 +304,7 @@ def main():
     for i, name in enumerate(('bomb', 'kit', 'armor', 'helmet')):
         providers.append({'type': 'bitmap', 'file': 'lairner:font/df/icon_%s.png' % name,
                           'height': 8, 'ascent': 7, 'chars': [chr(0xE010 + i)]})
+    feed_sprites_and_glyphs(providers)
     advances = {}
     for i in range(8):
         advances[chr(0xF801 + i)] = -(1 << i)

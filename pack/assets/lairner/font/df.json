@@ -73,6 +73,177 @@
       ]
     },
     {
+      "type": "bitmap",
+      "file": "lairner:font/df/feed_1.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue020"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feedb_1.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue030"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feed_2.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue021"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feedb_2.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue031"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feed_4.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue022"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feedb_4.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue032"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feed_8.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue023"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feedb_8.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue033"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feed_16.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue024"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feedb_16.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue034"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feed_32.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue025"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feedb_32.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue035"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feed_64.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue026"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feedb_64.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue036"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feedb_l.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue037"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feedb_r.png",
+      "height": 11,
+      "ascent": 9,
+      "chars": [
+        "\ue038"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feed_hs.png",
+      "height": 8,
+      "ascent": 7,
+      "chars": [
+        "\ue040"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feed_wall.png",
+      "height": 8,
+      "ascent": 7,
+      "chars": [
+        "\ue041"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "lairner:font/df/feed_skull.png",
+      "height": 8,
+      "ascent": 7,
+      "chars": [
+        "\ue042"
+      ]
+    },
+    {
       "type": "space",
       "advances": {
         "\uf801": -1,
