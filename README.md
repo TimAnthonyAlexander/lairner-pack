@@ -19,10 +19,10 @@ Set `item_model` on any base item, e.g. `minecraft:item_model="lairner:df/ak"`.
 | id | Shown as | Source |
 |---|---|---|
 | `lairner:df/glock` | G18 | own |
-| `lairner:df/usp` | USP | Kenney blaster-a + silencer-small |
+| `lairner:df/usp` | USP | own: black USP-S with a long suppressor, raised sights, hammer (2026-11-01) |
 | `lairner:df/deagle` | D-Eagle | own |
-| `lairner:df/mac10` | M10 | Kenney blaster-c |
-| `lairner:df/mp9` | MP9 | Kenney blaster-i |
+| `lairner:df/mac10` | M10 | own: black boxy MAC-10, threaded barrel, magazine in the grip, folded wire stock (2026-11-01) |
+| `lairner:df/mp9` | MP9 | own: black polymer MP9, top rail, foregrip, magazine in the grip, skeleton stock (2026-11-01) |
 | `lairner:df/ak` | AK | own |
 | `lairner:df/m4s` | M4-S | own: black M4A1-S, slim handguard, long suppressor, flat-top rail, collapsible stock (2026-11-01) |
 | `lairner:df/knife` | Knife | own |

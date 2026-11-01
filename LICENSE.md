@@ -3,9 +3,10 @@
 ## Third-party assets (CC0 1.0, public domain)
 
 - **Kenney, Blaster Kit 2.1** (https://kenney.nl/assets/blaster-kit), CC0 1.0.
-  Meshes in `source/kenney/` (blaster-a, c, i, j, k, n, grenade-a, grenade-b,
-  smoke, silencer-small, silencer-larger, colormap.png) are Kenney's and
-  were voxelized into the gun, grenade and smoke models.
+  Meshes in `source/kenney/` are Kenney's; grenade-a, grenade-b, smoke and
+  colormap.png are voxelized into the grenade and smoke models. The blaster
+  and silencer meshes were the gun models until 2026-11-01; every gun is our
+  own model now.
 - **Kenney audio packs** (https://kenney.nl/assets): RPG Audio, Impact
   Sounds, Interface Sounds, Sci-fi Sounds, CC0 1.0. Used for reloads,
   dry fire, hit tick, headshot, knife, grenade bounce, explosions.
@@ -25,7 +26,7 @@ Free Firearm Sound Library team.
   (`source/tim/headshot_dmg.m4a`), trimmed to 0.05-0.45 s and downmixed to mono by `tools/sounds.py`.
 - The gunshots (`pack/assets/lairner/sounds/df/<weapon>/shot_<n>.ogg`) are Tim's own recordings
   (2026-11-01, `source/tim/shots/`), downmixed to mono, trailing silence cut and peak -1 dB by `tools/sounds.py`.
-- The D-Eagle, AK, G18 and M4-S models are our own (cubes on the shared palette).
+- The D-Eagle, AK, G18, M4-S, USP-S, MAC-10 and MP9 models are our own (cubes on the shared palette).
 
 ## Everything else
 
